@@ -22,7 +22,7 @@
     @apply h-[48px];
   }
   .btn-lg {
-    @apply h-[60px];
+    @apply h-[60px] p-4;
   }
   .btn-primary {
     @apply bg-accent hover:bg-accent-hover;

@@ -14,7 +14,7 @@ const Header = () => {
 	});
 	return (
 		<header className={`${header ? "bg-white py-6 shadow-lg" : "bg-transparent py-8"} fixed z-50 w-full transition-all duration-300`}>
-			<div className="container mx-auto flex flex-col items-center gap-y-6 lg:flex-row lg:justify-between lg:gap-y-0">
+			<div className="container mx-auto flex flex-col items-center gap-y-6 lg:flex-row lg:justify-center lg:gap-y-0">
 				{/* <a href="/">{header ? <img className="w-[160px]" src={LogoDark} alt="images" /> : <img className="w-[160px]" src={LogoWhite} alt="images" />}</a> */}
 				{/* <a href="" className="btn btn-secondary btn-sm max-w-[240px] mx-auto">
 					Book Now
