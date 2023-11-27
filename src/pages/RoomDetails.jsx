@@ -11,8 +11,6 @@ import { RoomContext } from "../context/RoomContext";
 import { FaCat, FaCheck, FaSmokingBan } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import ScrollToTop from "../components/ScrollToTop";
-
 const RoomDetails = () => {
 	const { rooms } = useContext(RoomContext);
 	const { id } = useParams();
@@ -72,8 +70,7 @@ const RoomDetails = () => {
 									<KidsDropdown />
 								</div>
 
-								{/* <button className="btn btn-lg btn-primary w-full">Book now for ₦{price.toLocaleString()}</button> */}
-								<Link to={`/room/${id}/booknow`} className="btn btn-secondary btn-sm max-w-[300px] mx-auto">
+								<Link to={`/room/${id}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
 									Book now from ₦{price.toLocaleString()}
 								</Link>
 							</div>
