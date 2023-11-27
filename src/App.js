@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 ///Pages
 import Home from "./pages/Home";
 import RoomDetails from "./pages/RoomDetails";
+import BookNow from "./pages/BookNow";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
 	{
 		path: "/room/:id",
 		element: <RoomDetails />,
+	},
+	{
+		path: "/room/:id/booknow",
+		element: <BookNow />,
 	},
 ]);
 const App = () => {

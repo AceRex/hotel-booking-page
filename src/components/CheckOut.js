@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import DatePicker from "react-datepicker";
 import { BsCalendar } from "react-icons/bs";
 
+import { RoomContext } from "../context/RoomContext";
+
 const CheckOut = () => {
-	const [endDate, setEndDate] = useState();
+	const { endDate, setEndDate } = useContext(RoomContext);
+	console.log("endDate:", endDate);
 	return (
 		<div className="relative flex items-center h-full justify-end ">
 			<div className="absolute z-10 pr-8">

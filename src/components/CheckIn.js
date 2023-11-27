@@ -7,7 +7,7 @@ import "../datepicker.css";
 import { BsCalendar } from "react-icons/bs";
 
 const CheckIn = () => {
-	const [startDate, setStartDate] = useState();
+	const [startDate, setStartDate] = useState(new Date());
 	return (
 		<div className="relative flex items-center h-full justify-end ">
 			<div className="absolute z-10 pr-8">

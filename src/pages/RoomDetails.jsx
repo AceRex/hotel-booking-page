@@ -71,7 +71,7 @@ const RoomDetails = () => {
 									<KidsDropdown />
 								</div>
 
-								<button className="btn btn-lg btn-primary w-full">Book now for ₦{price}</button>
+								<button className="btn btn-lg btn-primary w-full">Book now for ₦{price.toLocaleString()}</button>
 							</div>
 						</div>
 

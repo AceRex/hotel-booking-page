@@ -48,8 +48,8 @@ const Room = ({ room }) => {
 
 			{/* Btn*/}
 
-			<Link to={`/room/${id}`} className="btn btn-secondary btn-sm max-w-[240px] mx-auto">
-				Book now from ₦{price}
+			<Link to={`/room/${id}`} className="btn btn-secondary btn-sm max-w-[300px] mx-auto">
+				Book now from ₦{price.toLocaleString()}
 			</Link>
 		</div>
 	);
