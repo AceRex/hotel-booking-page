@@ -3,12 +3,8 @@ import { useParams } from "react-router-dom";
 
 import { RoomContext } from "../context/RoomContext";
 
-import { FaCat, FaCheck, FaSmokingBan } from "react-icons/fa";
-
-import ScrollToTop from "../components/ScrollToTop";
-
 const RoomDetails = () => {
-	const { rooms, adults, kids } = useContext(RoomContext);
+	const { rooms, adults, kids, endDate, startDate } = useContext(RoomContext);
 	const { id } = useParams();
 
 	const room = rooms.find((room) => {
@@ -16,7 +12,13 @@ const RoomDetails = () => {
 	});
 	console.log(room);
 
-	const { name, description, imageLg, price, checkIn, checkOut, adult } = room;
+	const dateOptions = {
+		year: "numeric",
+		month: "numeric",
+		day: "numeric",
+	};
+
+	const { name, price } = room;
 	return (
 		<section className="">
 			<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
@@ -27,16 +29,21 @@ const RoomDetails = () => {
 			<div className="container mx-auto">
 				<div className="flex flex-col lg:flex-row h-full py-24 gap-6">
 					<div className="w-full h-full lg:w-[30%] px-6 bg-accent/20 py-4">
-						<div className="flex flex-col">
-							<p className="bg-gray/20">CheckIn </p>
-							<h2 className="h4">{checkIn}</h2>
-							<p className="bg-gray/20"> from 12:00:00pm</p>
+						<div className="flex flex-col gap-1">
+							<div className="flex justify-between items-center">
+								<p className="text-zinc-500">CheckIn </p>
+								<h2 className="">{startDate.toLocaleString(undefined, dateOptions)}</h2>
+							</div>
+							<p className="text-zinc-500"> from 12:00:00pm</p>
 						</div>
 
-						<div className="flex flex-col">
-							<p className="bg-gray/20">CheckOut </p>
-							<h2 className="h4">{checkOut}</h2>
-							<p className="bg-gray/20"> Until 10:00:00am</p>
+						<div className="flex flex-col mt-3">
+							<div className="flex justify-between items-center">
+								<p className="text-zinc-500">CheckOut </p>
+								<h2 className="">{endDate.toLocaleString(undefined, dateOptions)}</h2>
+							</div>
+
+							<p className="text-zinc-500"> Until 10:00:00am</p>
 						</div>
 						<div className="flex justify-between items-center mt-5">
 							<h2 className="">{name}</h2>
