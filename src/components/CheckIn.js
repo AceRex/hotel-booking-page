@@ -5,10 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../datepicker.css";
 
 import { BsCalendar } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { CheckInActions } from "../Redux/Slice/CheckIn";
 import { RoomContext } from "../context/RoomContext";
 
 const CheckIn = () => {
-	const { startDate, setStartDate } = useContext(RoomContext);
+	const checkIn = useSelector((state) => state.check.checkIn);
+	const dispatch = useDispatch();
 	return (
 		<div className="relative flex items-center h-full justify-end ">
 			<div className="absolute z-10 pr-8">
@@ -16,7 +19,7 @@ const CheckIn = () => {
 					<BsCalendar className="text-accent text-base" />
 				</div>
 			</div>
-			<DatePicker className="w-full h-full" selected={startDate} placeholderText="Check In" onChange={(date) => setStartDate(date)} />
+			<DatePicker className="w-full h-full" selected={checkIn} placeholderText="Check In" onChange={(date) => dispatch(CheckInActions.setCheckIn(date))} />
 		</div>
 	);
 };

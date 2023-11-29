@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Room = ({ room }) => {
 	const { id, name, image, size, maxPerson, description, price } = room;
+	const Data = useSelector((state) => state.room.data);
+	console.log(Data);
 	return (
 		<div className="bg-white shadow-2xl min-h-[500px] group">
 			<div className="overflow-hidden">

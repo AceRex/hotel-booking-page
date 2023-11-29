@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-import LogoWhite from "../assets/img/logo-white.svg";
-import LogoDark from "../assets/img/logo-dark.svg";
 
 const Header = () => {
 	const [header, setHeader] = useState(false);

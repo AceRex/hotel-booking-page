@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 ///Components
 import Header from "./components/Header";
@@ -7,6 +8,8 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import RoomDetails from "./pages/RoomDetails";
 import BookNow from "./pages/BookNow";
+
+import useInitialize from "./useInitialize";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -25,6 +28,11 @@ const router = createBrowserRouter([
 	},
 ]);
 const App = () => {
+	const { getRooms } = useInitialize();
+
+	useEffect(() => {
+		getRooms();
+	}, []);
 	return (
 		<div>
 			<Header />
