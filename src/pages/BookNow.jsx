@@ -1,4 +1,5 @@
 import React from "react";
+import axois from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,6 +7,10 @@ import { RoomContext } from "../context/RoomContext";
 
 const RoomDetails = () => {
 	const Data = useSelector((state) => state.room.data);
+	const CheckIn = useSelector((state) => state.check.checkIn);
+	const CheckOut = useSelector((state) => state.checkout.checkOut);
+	const Adult = useSelector((state) => state.adult.adult);
+	console.log(CheckIn);
 	// const { id } = useParams();
 	// console.log(Data);
 
@@ -18,6 +23,15 @@ const RoomDetails = () => {
 		year: "numeric",
 		month: "numeric",
 		day: "numeric",
+	};
+
+	const BookRoom = async () => {
+		try {
+			await axois.post(`${process.env.REACT_APP_BOOK_ROOM}`, [{}]);
+			console.log("booked");
+		} catch (err) {
+			console.log(`Error fetching data: ${err}`);
+		}
 	};
 
 	return (
@@ -33,7 +47,7 @@ const RoomDetails = () => {
 						<div className="flex flex-col gap-1">
 							<div className="flex justify-between items-center">
 								<p className="text-zinc-500">CheckIn </p>
-								<h2 className="">{}</h2>
+								<h2 className="">{CheckIn.toLocaleString(undefined, dateOptions)}</h2>
 							</div>
 							<p className="text-zinc-500"> from 12:00:00pm</p>
 						</div>
@@ -41,7 +55,7 @@ const RoomDetails = () => {
 						<div className="flex flex-col mt-3">
 							<div className="flex justify-between items-center">
 								<p className="text-zinc-500">CheckOut </p>
-								<h2 className="">{}</h2>
+								<h2 className="">{CheckOut.toLocaleString(undefined, dateOptions)}</h2>
 							</div>
 
 							<p className="text-zinc-500"> Until 10:00:00am</p>
@@ -52,7 +66,7 @@ const RoomDetails = () => {
 						</div>
 						<div className="flex justify-between items-center mt-5">
 							<h2 className="">Adult</h2>
-							<h2 className="">{}</h2>
+							<h2 className="">{Adult}</h2>
 						</div>
 						<div className="flex justify-between items-center mt-5">
 							<h2 className="">Kids</h2>
@@ -90,7 +104,9 @@ const RoomDetails = () => {
 									</div>
 								</div>
 
-								<button className="btn btn-lg btn-primary w-full">Book now for ₦{}</button>
+								<button className="btn btn-lg btn-primary w-full " onClick={BookRoom}>
+									Book now for ₦{}
+								</button>
 							</div>
 						</div>
 					</div>
