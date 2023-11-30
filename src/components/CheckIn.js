@@ -7,7 +7,6 @@ import "../datepicker.css";
 import { BsCalendar } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { CheckInActions } from "../Redux/Slice/CheckIn";
-import { RoomContext } from "../context/RoomContext";
 
 const CheckIn = () => {
 	const checkIn = useSelector((state) => state.check.checkIn);

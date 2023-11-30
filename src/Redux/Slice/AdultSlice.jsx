@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const CheckOutSlice = createSlice({
-	name: "checkout",
+const AdultSlice = createSlice({
+	name: "adult",
 	initialState: {
 		data: [],
 		loading: true,
-		checkOut: "",
+		adult: "1 Adult",
 	},
 	reducers: {
 		setData: (state, action) => {
@@ -14,12 +14,12 @@ const CheckOutSlice = createSlice({
 		setLoading: (state, action) => {
 			state.loading = action.payload;
 		},
-		setCheckOut: (state, action) => {
-			state.checkOut = action.payload;
+		setAdult: (state, action) => {
+			state.adult = action.payload;
 		},
 	},
 });
 
-export const CheckOutActions = CheckOutSlice.actions;
+export const AdultActions = AdultSlice.actions;
 
-export default CheckOutSlice;
+export default AdultSlice;

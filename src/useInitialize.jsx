@@ -9,7 +9,7 @@ const useInitialize = () => {
 	const getRooms = async () => {
 		dispatch(RoomActions.setLoading(true));
 		try {
-			const response = await axios.get(`${process.env.REACT_APP_ROOM_LIST}`, {
+			const response = await axios.get(`${process.env.REACT_APP_ROOMS}`, {
 				headers: {
 					Authorization: `Bearer ${process.env.REACT_APP_AUTHENTICATION}`,
 				},
