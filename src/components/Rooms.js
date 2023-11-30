@@ -8,8 +8,7 @@ import Room from "../components/Room";
 const Rooms = () => {
 	const { rooms, loading } = useContext(RoomContext);
 	const Data = useSelector((state) => state.room.data);
-	console.log(Data.roomTypeInfo);
-	console.log(Data.roomTypePrice);
+	console.log(Data);
 
 	return (
 		<section className=" py-24">
@@ -20,16 +19,10 @@ const Rooms = () => {
 			)}
 			<div className="container mx-auto lg:px:0">
 				<div className="grid grid-cols-1 max-w-sm mx-auto gap-[30px] lg:grid-cols-3 lg:max-w-none lg:mx-0">
-					{rooms.map((room) => {
+					{Data.map((room) => {
 						return <Room room={room} key={room.id} />;
 					})}
 				</div>
-
-				{/* <div>
-					{Data.roomTypeInfo.map((items) => {
-						return <h2>{items}</h2>;
-					})}
-				</div> */}
 			</div>
 		</section>
 	);

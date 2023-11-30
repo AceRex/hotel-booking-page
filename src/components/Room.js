@@ -1,17 +1,14 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Room = ({ room }) => {
-	const { id, name, image, size, maxPerson, description, price } = room;
-	const Data = useSelector((state) => state.room.data);
-	console.log(Data);
+	const { RoomNo, Areasize, AdultNo, ChildNo, RoomTypeName, DefaultImage, ShortDescripition } = room;
 	return (
 		<div className="bg-white shadow-2xl min-h-[500px] group">
 			<div className="overflow-hidden">
-				<img className="group-hover:scale-110 transition-all duration-300 w-full" src={image} alt="room images" />
+				<img className="group-hover:scale-110 transition-all duration-300 w-full" src={`https://demo.cranesoft-digitalmenu.com/storage/uploads/tenant/product/${DefaultImage}`} alt="room images" />
 			</div>
 
 			{/* Details*/}
@@ -23,7 +20,7 @@ const Room = ({ room }) => {
 						</div>
 						<div className="flex gap-x-1">
 							<div> Size</div>
-							<div>{size} m2</div>
+							<div>{Areasize} m2</div>
 						</div>
 					</div>
 
@@ -33,7 +30,7 @@ const Room = ({ room }) => {
 						</div>
 						<div className="flex gap-x-1">
 							<div> Max People </div>
-							<div>{maxPerson}</div>
+							<div>{AdultNo + ChildNo}</div>
 						</div>
 					</div>
 				</div>
@@ -43,16 +40,16 @@ const Room = ({ room }) => {
 
 			<div className="text-center">
 				<Link to={"/room/$id"}>
-					<h3 className="h3">{name}</h3>
+					<h3 className="h3">{RoomTypeName}</h3>
 				</Link>
 
-				<p className="max-w-[300px] mx-auto mb-3 lg:mb-6 ">{description.slice(0, 56)}</p>
+				<p className="max-w-[300px] mx-auto mb-3 lg:mb-6 ">{ShortDescripition}</p>
 			</div>
 
 			{/* Btn*/}
 
-			<Link to={`/room/${id}`} className="btn btn-secondary btn-sm max-w-[300px] mx-auto">
-				Book now from ₦{price.toLocaleString()}
+			<Link to={`/room/${RoomNo}`} className="btn btn-secondary btn-sm max-w-[300px] mx-auto">
+				Book now from ₦
 			</Link>
 		</div>
 	);

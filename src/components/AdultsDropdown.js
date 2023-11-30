@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-
-import { RoomContext } from "../context/RoomContext";
+import React from "react";
 
 //headless ui menu
 

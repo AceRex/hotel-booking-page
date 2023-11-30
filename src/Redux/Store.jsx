@@ -9,7 +9,7 @@ const store = configureStore({
 	reducer: {
 		room: RoomSlice.reducer,
 		check: CheckInSlice.reducer,
-		checkOut: CheckOutSlice.reducer,
+		checkout: CheckOutSlice.reducer,
 		adult: AdultSlice.reducer,
 	},
 });

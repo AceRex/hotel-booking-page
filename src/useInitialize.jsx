@@ -14,8 +14,8 @@ const useInitialize = () => {
 					Authorization: `Bearer ${process.env.REACT_APP_AUTHENTICATION}`,
 				},
 			});
-			console.log(response);
-			dispatch(RoomActions.setData(response.data));
+			// console.log(response.data.roomsInfo);
+			dispatch(RoomActions.setData(response.data.roomsInfo));
 			dispatch(RoomActions.setLoading(false));
 		} catch (error) {
 			console.error("Error fetching data:", error);

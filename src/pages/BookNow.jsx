@@ -1,16 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { RoomContext } from "../context/RoomContext";
 
 const RoomDetails = () => {
-	const { rooms, adults, kids, endDate, startDate } = useContext(RoomContext);
-	const { id } = useParams();
+	const Data = useSelector((state) => state.room.data);
+	// const { id } = useParams();
+	// console.log(Data);
 
-	const room = rooms.find((room) => {
-		return room.id === Number(id);
-	});
-	console.log(room);
+	// const room = Data.find((room) => {
+	// 	return room.RoomNo === Number(id);
+	// });
+	// console.log(room);
 
 	const dateOptions = {
 		year: "numeric",
@@ -18,12 +20,11 @@ const RoomDetails = () => {
 		day: "numeric",
 	};
 
-	const { name, price } = room;
 	return (
 		<section className="">
 			<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
 				<div className="absolute w-full h-full bg-black/75">
-					<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {name} Details</h1>
+					<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {Data.RoomTypeName} Details</h1>
 				</div>
 			</div>
 			<div className="container mx-auto">
@@ -32,7 +33,7 @@ const RoomDetails = () => {
 						<div className="flex flex-col gap-1">
 							<div className="flex justify-between items-center">
 								<p className="text-zinc-500">CheckIn </p>
-								<h2 className="">{startDate.toLocaleString(undefined, dateOptions)}</h2>
+								<h2 className="">{}</h2>
 							</div>
 							<p className="text-zinc-500"> from 12:00:00pm</p>
 						</div>
@@ -40,22 +41,22 @@ const RoomDetails = () => {
 						<div className="flex flex-col mt-3">
 							<div className="flex justify-between items-center">
 								<p className="text-zinc-500">CheckOut </p>
-								<h2 className="">{endDate.toLocaleString(undefined, dateOptions)}</h2>
+								<h2 className="">{}</h2>
 							</div>
 
 							<p className="text-zinc-500"> Until 10:00:00am</p>
 						</div>
 						<div className="flex justify-between items-center mt-5">
-							<h2 className="">{name}</h2>
-							<h2 className="">₦{price.toLocaleString()}</h2>
+							<h2 className="">{}</h2>
+							<h2 className="">₦{}</h2>
 						</div>
 						<div className="flex justify-between items-center mt-5">
 							<h2 className="">Adult</h2>
-							<h2 className="">{adults}</h2>
+							<h2 className="">{}</h2>
 						</div>
 						<div className="flex justify-between items-center mt-5">
 							<h2 className="">Kids</h2>
-							<h2 className="">{kids}</h2>
+							<h2 className="">{}</h2>
 						</div>
 					</div>
 					<div className="w-full h-full lg:w-[60%]">
@@ -87,13 +88,9 @@ const RoomDetails = () => {
 										<h2>Address</h2>
 										<textarea type="text" placeholder="7, opebi street " className="p-4" required />
 									</div>
-									{/* <div className="w-full h-full flex flex-col ">
-										<h2>Phone number</h2>
-										<input type="tel" placeholder="+2348848493" className="p-4" required />
-									</div> */}
 								</div>
 
-								<button className="btn btn-lg btn-primary w-full">Book now for ₦{price.toLocaleString()}</button>
+								<button className="btn btn-lg btn-primary w-full">Book now for ₦{}</button>
 							</div>
 						</div>
 					</div>
