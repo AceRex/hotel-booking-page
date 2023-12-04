@@ -4,7 +4,7 @@ import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Room = ({ room }) => {
-	const { RoomNo, Areasize, AdultNo, ChildNo, RoomTypeName, DefaultImage, ShortDescripition } = room;
+	const { RoomNo, Areasize, AdultNo, ChildNo, RoomTypeName, DefaultImage, ShortDescripition, id } = room;
 	return (
 		<div className="bg-white shadow-2xl min-h-[500px] group">
 			<div className="overflow-hidden">
@@ -39,7 +39,7 @@ const Room = ({ room }) => {
 			{/* names */}
 
 			<div className="text-center">
-				<Link to={"/room/$id"}>
+				<Link to={`/room/${RoomNo}`}>
 					<h3 className="h3">{RoomTypeName}</h3>
 				</Link>
 

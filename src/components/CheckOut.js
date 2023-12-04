@@ -3,10 +3,10 @@ import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
 import { BsCalendar } from "react-icons/bs";
 
-import { CheckOutActions } from "./../Redux/Slice/CheckOut";
+import { RoomActions } from "./../Redux/Slice/RoomSlice";
 
 const CheckOut = () => {
-	const checkOut = useSelector((state) => state.checkout.checkOut);
+	const checkOut = useSelector((state) => state.room.checkOut);
 	const dispatch = useDispatch();
 	return (
 		<div className="relative flex items-center h-full justify-end ">
@@ -15,7 +15,7 @@ const CheckOut = () => {
 					<BsCalendar className="text-accent text-base" />
 				</div>
 			</div>
-			<DatePicker className="w-full h-full" selected={checkOut} placeholderText="Check Out" onChange={(date) => dispatch(CheckOutActions.setCheckOut(date))} />
+			<DatePicker className="w-full h-full" selected={checkOut} placeholderText="Check Out" onChange={(date) => dispatch(RoomActions.setCheckOut(date))} />
 		</div>
 	);
 };

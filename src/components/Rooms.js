@@ -8,7 +8,6 @@ import Room from "../components/Room";
 const Rooms = () => {
 	const { rooms, loading } = useContext(RoomContext);
 	const Data = useSelector((state) => state.room.data);
-	console.log(Data);
 
 	return (
 		<section className=" py-24">

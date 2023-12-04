@@ -12,6 +12,10 @@ const RoomSlice = createSlice({
 		currentPage: 1,
 		branch: "",
 		menu: "",
+		adult: "1 Adult",
+		kid: "0 kids",
+		checkIn: "",
+		checkOut: "",
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -37,6 +41,18 @@ const RoomSlice = createSlice({
 		},
 		setMenu: (state, action) => {
 			state.menu = action.payload;
+		},
+		setAdult: (state, action) => {
+			state.adult = action.payload;
+		},
+		setKids: (state, action) => {
+			state.kid = action.payload;
+		},
+		setCheckIn: (state, action) => {
+			state.checkIn = action.payload;
+		},
+		setCheckOut: (state, action) => {
+			state.checkOut = action.payload;
 		},
 	},
 });

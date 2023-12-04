@@ -1,18 +1,15 @@
 import React from "react";
 import axois from "axios";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-import { RoomContext } from "../context/RoomContext";
+import { useSelector } from "react-redux";
 
 const RoomDetails = () => {
 	const Data = useSelector((state) => state.room.data);
-	const CheckIn = useSelector((state) => state.check.checkIn);
-	const CheckOut = useSelector((state) => state.checkout.checkOut);
-	const Adult = useSelector((state) => state.adult.adult);
-	console.log(CheckIn);
+	const CheckIn = useSelector((state) => state.room.checkIn);
+	const CheckOut = useSelector((state) => state.room.checkOut);
+	const Adult = useSelector((state) => state.room.adult);
+	const Kids = useSelector((state) => state.room.kid);
 	// const { id } = useParams();
-	// console.log(Data);
+	console.log(Data);
 
 	// const room = Data.find((room) => {
 	// 	return room.RoomNo === Number(id);
@@ -46,6 +43,16 @@ const RoomDetails = () => {
 					<div className="w-full h-full lg:w-[30%] px-6 bg-accent/20 py-4">
 						<div className="flex flex-col gap-1">
 							<div className="flex justify-between items-center">
+								<p className="text-zinc-500">Room Name </p>
+								<h2 className="">{Data.RoomTypeName}</h2>
+							</div>
+							<div className="flex justify-between items-center">
+								<p className="text-zinc-500">Room Number </p>
+								<h2 className="">{Data.RoomNo}</h2>
+							</div>
+						</div>
+						<div className="flex flex-col gap-1">
+							<div className="flex justify-between items-center">
 								<p className="text-zinc-500">CheckIn </p>
 								<h2 className="">{CheckIn.toLocaleString(undefined, dateOptions)}</h2>
 							</div>
@@ -70,7 +77,7 @@ const RoomDetails = () => {
 						</div>
 						<div className="flex justify-between items-center mt-5">
 							<h2 className="">Kids</h2>
-							<h2 className="">{}</h2>
+							<h2 className="">{Kids}</h2>
 						</div>
 					</div>
 					<div className="w-full h-full lg:w-[60%]">
