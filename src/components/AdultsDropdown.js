@@ -8,7 +8,7 @@ const AdultsDropdown = () => {
 	const dispatch = useDispatch();
 	return (
 		<div className="w-full h-full bg-white relative flex items-center justify-between">
-			<select name={adults} onChange={(e) => dispatch(RoomActions.setAdult(e.target.value))} className="bg-white absolute w-full flex flex-col z-40 border-none">
+			<select name={adults} onChange={(e) => dispatch(RoomActions.setAdult(e.target.value))} className="bg-white absolute w-full flex flex-col border-none">
 				{lis.map(({ id, name }) => (
 					<option key={id} value={name} className="border-none h-12 hover:bg-accent hover:text-white w-full flex justify-center items-center cursor-pointer">
 						{name}

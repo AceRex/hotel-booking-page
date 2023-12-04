@@ -10,28 +10,25 @@ import { FaCat, FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const RoomDetails = () => {
-	const Data = useSelector((state) => state.room.data);
-	const { id } = useParams();
+	const Data = useSelector((state) => state.room.previewedRoom);
+	console.log(Data);
 
-	// const room = Data.find((room) => {
-	// 	return room.id === Number(id);
-	// });
-
-	const { RoomTypeName, GalleryImage1, description } = Data;
 	return (
 		<section className="">
+			{/* {Data.map((items) => console.log(items))} */}
 			<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
 				<div className="absolute w-full h-full bg-black/75">
-					<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {RoomTypeName} Details</h1>
+					<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {Data.RoomTypeName} Details</h1>
 				</div>
 			</div>
+
 			<div className="container mx-auto">
 				<div className="flex flex-col lg:flex-row h-full py-24">
 					<div className="w-full h-full lg:w-[60%] px-6">
-						<h2 className="h2">{RoomTypeName}</h2>
-						<p className="mb-8">{description}</p>
+						<h2 className="h2">{Data.RoomTypeName}</h2>
+						<p className="mb-8">{Data.description}</p>
 
-						<img className="mb-8" src={GalleryImage1} alt="house" />
+						<img className="mb-8" src={Data.GalleryImage1} alt="house" />
 
 						{/* <div className="mt-12">
 							<h3 className="h3 mb-3">Room Facilities</h3>
@@ -68,7 +65,7 @@ const RoomDetails = () => {
 									<KidsDropdown />
 								</div>
 
-								<Link to={`/room/${id}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
+								<Link to={`/room/${Data.RoomNo}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
 									Book now from ₦{}
 								</Link>
 							</div>

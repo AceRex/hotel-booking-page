@@ -1,15 +1,21 @@
 import React from "react";
 import axois from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { RoomActions } from "./../Redux/Slice/RoomSlice";
 
 const RoomDetails = () => {
+	const dispatch = useDispatch();
 	const Data = useSelector((state) => state.room.data);
 	const CheckIn = useSelector((state) => state.room.checkIn);
 	const CheckOut = useSelector((state) => state.room.checkOut);
 	const Adult = useSelector((state) => state.room.adult);
 	const Kids = useSelector((state) => state.room.kid);
-	// const { id } = useParams();
-	console.log(Data);
+	const FirstName = useSelector((state) => state.room.firstname);
+	const LastName = useSelector((state) => state.room.lastname);
+	const Email = useSelector((state) => state.room.email);
+	const Address = useSelector((state) => state.room.address);
+	const Phone = useSelector((state) => state.room.phone);
+	console.log(FirstName);
 
 	// const room = Data.find((room) => {
 	// 	return room.RoomNo === Number(id);
@@ -24,7 +30,16 @@ const RoomDetails = () => {
 
 	const BookRoom = async () => {
 		try {
-			await axois.post(`${process.env.REACT_APP_BOOK_ROOM}`, [{}]);
+			await axois.post(`${process.env.REACT_APP_BOOK_ROOM}`, [
+				{
+					CheckIn,
+					CheckOut,
+					FirstName,
+					LastName,
+					Address,
+					Phone,
+				},
+			]);
 			console.log("booked");
 		} catch (err) {
 			console.log(`Error fetching data: ${err}`);
@@ -87,27 +102,27 @@ const RoomDetails = () => {
 								<div className="flex gap-6 h-full">
 									<div className="w-full h-full flex flex-col ">
 										<h2>FirstName</h2>
-										<input type="text" placeholder="John" className="p-4" required />
+										<input type="text" placeholder="John" value={FirstName} onChange={(e) => dispatch(RoomActions.setFirstName(e.target.value))} className="p-4" required />
 									</div>
 									<div className="w-full h-full flex flex-col ">
 										<h2>LastName</h2>
-										<input type="text" placeholder="Doe" className="p-4" required />
+										<input type="text" placeholder="Doe" value={LastName} onChange={(e) => dispatch(RoomActions.setLastName(e.target.value))} className="p-4" required />
 									</div>
 								</div>
 								<div className="flex gap-6 h-full">
 									<div className="w-full h-full flex flex-col ">
 										<h2>Email</h2>
-										<input type="email" placeholder="johndoe@email.com" className="p-4" required />
+										<input type="email" placeholder="johndoe@email.com" value={Email} onChange={(e) => dispatch(RoomActions.setEmail(e.target.value))} className="p-4" required />
 									</div>
 									<div className="w-full h-full flex flex-col ">
 										<h2>Phone number</h2>
-										<input type="tel" placeholder="+2348848493" className="p-4" required />
+										<input type="tel" placeholder="+2348848493" value={Phone} onChange={(e) => dispatch(RoomActions.setPhone(e.target.value))} className="p-4" required />
 									</div>
 								</div>
 								<div className="flex gap-6 h-full">
 									<div className="w-full h-full flex flex-col ">
 										<h2>Address</h2>
-										<textarea type="text" placeholder="7, opebi street " className="p-4" required />
+										<textarea type="text" placeholder="7, opebi street " value={Address} onChange={(e) => dispatch(RoomActions.setAddress(e.target.value))} className="p-4" required />
 									</div>
 								</div>
 

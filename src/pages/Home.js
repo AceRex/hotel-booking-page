@@ -1,5 +1,5 @@
 import React from "react";
-import Rooms from "../components/Rooms";
+import Room from "../components/Room";
 import BookForm from "../components/BookForm";
 import HeroSlider from "../components/HeroSlider";
 
@@ -13,7 +13,7 @@ const Home = () => {
 				</div>
 			</div>
 
-			<Rooms />
+			<Room />
 		</>
 	);
 };

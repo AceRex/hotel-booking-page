@@ -16,6 +16,14 @@ const RoomSlice = createSlice({
 		kid: "0 kids",
 		checkIn: "",
 		checkOut: "",
+		firstName: null,
+		lastName: null,
+		email: null,
+		address: null,
+		phone: null,
+		previewItem: "",
+		previewedRoom: "",
+		total: 0,
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -45,7 +53,7 @@ const RoomSlice = createSlice({
 		setAdult: (state, action) => {
 			state.adult = action.payload;
 		},
-		setKids: (state, action) => {
+		setKid: (state, action) => {
 			state.kid = action.payload;
 		},
 		setCheckIn: (state, action) => {
@@ -53,6 +61,30 @@ const RoomSlice = createSlice({
 		},
 		setCheckOut: (state, action) => {
 			state.checkOut = action.payload;
+		},
+		setFirstName: (state, action) => {
+			state.firstName = action.payload;
+		},
+		setLastName: (state, action) => {
+			state.lastName = action.payload;
+		},
+		setEmail: (state, action) => {
+			state.email = action.payload;
+		},
+		setAddress: (state, action) => {
+			state.address = action.payload;
+		},
+		setPhone: (state, action) => {
+			state.phone = action.payload;
+		},
+		setPreviewItem: (state, action) => {
+			state.previewItem = action.payload;
+		},
+		setPreviewedRoom: (state, action) => {
+			state.previewedRoom = action.payload;
+		},
+		setTotal: (state, action) => {
+			state.total = action.payload;
 		},
 	},
 });
