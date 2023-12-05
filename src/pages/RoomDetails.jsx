@@ -1,42 +1,36 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import AdultsDropdown from "../components/AdultsDropdown";
 import KidsDropdown from "../components/KidsDropdown";
 import CheckIn from "../components/CheckIn";
 import CheckOut from "../components/CheckOut";
-
-import { RoomContext } from "../context/RoomContext";
-
-import { FaCat, FaCheck, FaSmokingBan } from "react-icons/fa";
-
-import ScrollToTop from "../components/ScrollToTop";
+import { FaCat, FaCheck } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const RoomDetails = () => {
-	const { rooms } = useContext(RoomContext);
-	const { id } = useParams();
+	const Data = useSelector((state) => state.room.previewedRoom);
+	console.log(Data);
 
-	const room = rooms.find((room) => {
-		return room.id === Number(id);
-	});
-
-	const { name, description, facilities, imageLg, price } = room;
 	return (
 		<section className="">
+			{/* {Data.map((items) => console.log(items))} */}
 			<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
 				<div className="absolute w-full h-full bg-black/75">
-					<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {name} Details</h1>
+					<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {Data.RoomTypeName} Details</h1>
 				</div>
 			</div>
+
 			<div className="container mx-auto">
 				<div className="flex flex-col lg:flex-row h-full py-24">
 					<div className="w-full h-full lg:w-[60%] px-6">
-						<h2 className="h2">{name}</h2>
-						<p className="mb-8">{description}</p>
+						<h2 className="h2">{Data.RoomTypeName}</h2>
+						<p className="mb-8">{Data.description}</p>
 
-						<img className="mb-8" src={imageLg} alt="house" />
+						<img className="mb-8" src={Data.GalleryImage1} alt="house" />
 
-						<div className="mt-12">
+						{/* <div className="mt-12">
 							<h3 className="h3 mb-3">Room Facilities</h3>
 							<p className="mb-12">
 								<div className="grid grid-cols-3 gap-6 mb-12">
@@ -51,7 +45,7 @@ const RoomDetails = () => {
 									})}
 								</div>
 							</p>
-						</div>
+						</div> */}
 					</div>
 					<div className="w-full h-full lg:w-[40%]">
 						<div className=" py-8 px-6 bg-accent/20 mb-12 ">
@@ -71,13 +65,15 @@ const RoomDetails = () => {
 									<KidsDropdown />
 								</div>
 
-								<button className="btn btn-lg btn-primary w-full">Book now for ₦{price}</button>
+								<Link to={`/room/${Data.RoomNo}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
+									Book now from ₦{}
+								</Link>
 							</div>
 						</div>
 
 						<div className="">
 							<h3 className="h3">Hotel rules</h3>
-							<p className="mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, rem?</p>
+							<p className="mb-6">Kindly Obey the rules in order to avoid embassrement </p>
 
 							<ul className="flex flex-col gap-y-4">
 								<li className="flex items-center gap-x-4">
@@ -91,10 +87,6 @@ const RoomDetails = () => {
 								<li className="flex items-center gap-x-4">
 									<FaCat className="text-accent" />
 									No Pet
-								</li>
-								<li className="flex items-center gap-x-4">
-									<FaSmokingBan className="text-accent" />
-									No smoking
 								</li>
 							</ul>
 						</div>

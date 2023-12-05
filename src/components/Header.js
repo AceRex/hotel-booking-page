@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-import LogoWhite from "../assets/img/logo-white.svg";
-import LogoDark from "../assets/img/logo-dark.svg";
 
 const Header = () => {
 	const [header, setHeader] = useState(false);
@@ -20,7 +16,7 @@ const Header = () => {
 					Book Now
 				</a> */}
 				<nav className={`${header ? "text-primary" : "text-white"} flex gap-x-4  font-tertiary tracking-[3px] text-[15px] items-center lg:gap-x-8`}>
-					<a href="" className="hover:text-accent transition">
+					<a href="/" className="hover:text-accent transition">
 						Home
 					</a>
 					<a href="" className="hover:text-accent transition">

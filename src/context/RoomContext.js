@@ -8,10 +8,11 @@ const RoomProvider = ({ children }) => {
 	const [kids, setKids] = useState("0 kids");
 	const [total, setTotal] = useState(0);
 	const [loading, setLoading] = useState(false);
+	// console.log(formattedDate);
 
 	useEffect(() => {
 		setTotal(Number(adults[0]) + Number(kids[0]));
-	});
+	}, [adults, kids]);
 
 	const handleClick = (e) => {
 		setLoading(true);

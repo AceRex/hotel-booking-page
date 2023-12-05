@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
+import axios from "axios";
+
+import { useDispatch, useSelector } from "react-redux";
 
 import AdultsDropdown from "../components/AdultsDropdown";
 import KidsDropdown from "./KidsDropdown";
 import CheckIn from "../components/CheckIn";
 import CheckOut from "../components/CheckOut";
-import { RoomContext } from "../context/RoomContext";
 
 const BookForm = () => {
-	const { handleClick } = useContext(RoomContext);
+	const CheckInDate = useSelector((state) => state.room.checkin);
+	const CheckOutDate = useSelector((state) => state.room.checkOut);
+	const AdultNo = useSelector((state) => state.room.adult);
+	const KidNo = useSelector((state) => state.room.kid);
+
 	return (
 		<form className="h-[300px] w-full lg:h-[70px]">
 			<div className="flex flex-col w-full h-full lg:flex-row">
@@ -24,7 +30,7 @@ const BookForm = () => {
 					<KidsDropdown />
 				</div>
 
-				<button onClick={(e) => handleClick(e)} type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-primary">
 					Check Now
 				</button>
 			</div>
