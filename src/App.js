@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import RoomDetails from "./pages/RoomDetails";
 import BookNow from "./pages/BookNow";
 
-import useInitialize from "./useInitialize";
+import Initialize from "./useInitialize";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
 	},
 ]);
 const App = () => {
-	const { getRooms } = useInitialize();
+	const getRooms = Initialize();
 
 	useEffect(() => {
 		getRooms();

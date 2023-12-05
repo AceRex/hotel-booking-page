@@ -19,14 +19,14 @@ const Room = () => {
 	return (
 		<>
 			<section className="py-24">
-				{Loading && (
+				{/* {Loading && (
 					<div
 						className="h-screen fixed bottom-0 top-0 bg-black/90 w-full z-50 flex
 				justify-center items-center"
 					>
 						<SpinnerDotted color="white" />
 					</div>
-				)}
+				)} */}
 
 				<div className="text-center">
 					<h2 className="h3"> Our Hotels</h2>

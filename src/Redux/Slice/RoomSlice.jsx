@@ -9,6 +9,7 @@ const RoomSlice = createSlice({
 		roomid: "",
 		name: "",
 		searchTerm: "",
+		allRoom: [],
 		currentPage: 1,
 		branch: "",
 		menu: "",
@@ -85,6 +86,9 @@ const RoomSlice = createSlice({
 		},
 		setTotal: (state, action) => {
 			state.total = action.payload;
+		},
+		setAllRooms: (state, action) => {
+			state.allRoom = action.payload;
 		},
 	},
 });
