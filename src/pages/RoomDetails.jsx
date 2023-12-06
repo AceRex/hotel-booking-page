@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -10,27 +10,42 @@ import { FaCat, FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const RoomDetails = () => {
-	const Data = useSelector((state) => state.room.previewedRoom);
+	const { RoomTypeName } = useParams();
+	const [category, setCategory] = useState([]);
+	const [sampleRoom, setSampleRoom] = useState(null);
+
+	const Data = useSelector((state) => state.room.data);
+
+	useEffect(() => {
+		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
+		console.log({ array, Data });
+		setCategory(array);
+		setSampleRoom(array[0]);
+	}, [Data, RoomTypeName]);
 	console.log(Data);
 
 	return (
 		<section className="">
-			{/* {Data.map((items) => console.log(items))} */}
-			<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
-				<div className="absolute w-full h-full bg-black/75">
-					<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {Data.RoomTypeName} Details</h1>
-				</div>
-			</div>
+			{sampleRoom ? (
+				<>
+					<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
+						<div className="absolute w-full h-full bg-black/75">
+							<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {RoomTypeName} Details</h1>
+						</div>
+					</div>
+					<div className="container mx-auto">
+						<div className="flex flex-col lg:flex-row h-full py-24">
+							<div className="w-full h-full lg:w-[60%] px-6">
+								<h2 className="h2">{RoomTypeName}</h2>
+								<p className="mb-8">{sampleRoom.LongDescription}</p>
 
-			<div className="container mx-auto">
-				<div className="flex flex-col lg:flex-row h-full py-24">
-					<div className="w-full h-full lg:w-[60%] px-6">
-						<h2 className="h2">{Data.RoomTypeName}</h2>
-						<p className="mb-8">{Data.description}</p>
+								<div className="flex">
+									<img className="mb-8" src={sampleRoom.GalleryImage1} alt="house" />
+									<img className="mb-8" src={sampleRoom.GalleryImage2} alt="house" />
+									<img className="mb-8" src={sampleRoom.GalleryImage3} alt="house" />
+								</div>
 
-						<img className="mb-8" src={Data.GalleryImage1} alt="house" />
-
-						{/* <div className="mt-12">
+								{/* <div className="mt-12">
 							<h3 className="h3 mb-3">Room Facilities</h3>
 							<p className="mb-12">
 								<div className="grid grid-cols-3 gap-6 mb-12">
@@ -46,53 +61,59 @@ const RoomDetails = () => {
 								</div>
 							</p>
 						</div> */}
-					</div>
-					<div className="w-full h-full lg:w-[40%]">
-						<div className=" py-8 px-6 bg-accent/20 mb-12 ">
-							<div className="flex flex-col space-y-4 mb-4">
-								<h3>Your Reservation</h3>
+							</div>
+							<div className="w-full h-full lg:w-[40%]">
+								<div className=" py-8 px-6 bg-accent/20 mb-12 ">
+									<div className="flex flex-col space-y-4 mb-4">
+										<h3>Your Reservation</h3>
 
-								<div className="h-[60px]">
-									<CheckIn />
-								</div>
-								<div className="h-[60px]">
-									<CheckOut />
-								</div>
-								<div className="h-[60px]">
-									<AdultsDropdown />
-								</div>
-								<div className="h-[60px]">
-									<KidsDropdown />
+										<div className="h-[60px]">
+											<CheckIn />
+										</div>
+										<div className="h-[60px]">
+											<CheckOut />
+										</div>
+										<div className="h-[60px]">
+											<AdultsDropdown />
+										</div>
+										<div className="h-[60px]">
+											<KidsDropdown />
+										</div>
+
+										<Link to={`/room/${Data.RoomNo}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
+											Book now from ₦{}
+										</Link>
+									</div>
 								</div>
 
-								<Link to={`/room/${Data.RoomNo}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
-									Book now from ₦{}
-								</Link>
+								<div className="">
+									<h3 className="h3">Hotel rules</h3>
+									<p className="mb-6">Kindly Obey the rules in order to avoid embassrement </p>
+
+									<ul className="flex flex-col gap-y-4">
+										<li className="flex items-center gap-x-4">
+											<FaCheck className="text-accent" />
+											Check-in: 3:00pm - 9:00pm
+										</li>
+										<li className="flex items-center gap-x-4">
+											<FaCheck className="text-accent" />
+											Check-out: 10:30am
+										</li>
+										<li className="flex items-center gap-x-4">
+											<FaCat className="text-accent" />
+											No Pet
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
-
-						<div className="">
-							<h3 className="h3">Hotel rules</h3>
-							<p className="mb-6">Kindly Obey the rules in order to avoid embassrement </p>
-
-							<ul className="flex flex-col gap-y-4">
-								<li className="flex items-center gap-x-4">
-									<FaCheck className="text-accent" />
-									Check-in: 3:00pm - 9:00pm
-								</li>
-								<li className="flex items-center gap-x-4">
-									<FaCheck className="text-accent" />
-									Check-out: 10:30am
-								</li>
-								<li className="flex items-center gap-x-4">
-									<FaCat className="text-accent" />
-									No Pet
-								</li>
-							</ul>
-						</div>
 					</div>
-				</div>
-			</div>
+				</>
+			) : (
+				<div> loading....</div>
+			)}
+
+			{/* {Data.map((items) => console.log(items))} */}
 		</section>
 	);
 };

@@ -9,7 +9,7 @@ const router = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path: "/room/:id",
+		path: "/room/:RoomTypeName",
 		element: <RoomDetails />,
 	},
 	{
@@ -18,4 +18,4 @@ const router = createBrowserRouter([
 	},
 ]);
 
-export default router
+export default router;

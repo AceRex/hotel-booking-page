@@ -2,14 +2,29 @@ import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Img3 from "../assets/img/heroSlider/3.jpg";
+import { useEffect, useState } from "react";
 
 const RoomCard = () => {
 	const Data = useSelector((state) => state.room.data);
-	// console.log(Data);
+	const [categorys, setCategorys] = useState([]);
+
+	useEffect(() => {
+		const array = [];
+		const roomCat = {};
+		for (const room of Data) {
+			if (!roomCat[room.RoomTypeName]) {
+				roomCat[room.RoomTypeName] = true;
+				array.push(room);
+			}
+		}
+		console.log({ array, Data });
+		setCategorys(array);
+	}, [Data]);
+
 	return (
 		<div className="container mx-auto lg:px:0">
 			<div className="grid grid-cols-1 max-w-sm mx-auto gap-[30px] lg:grid-cols-3 lg:max-w-none lg:mx-0">
-				{Data.map((room) => (
+				{categorys.map((room) => (
 					<div className="bg-red shadow-2xl min-h-[500px] group">
 						<div className="overflow-hidden">
 							<img className="group-hover:scale-110 transition-all duration-300 w-full" src={Img3} alt="room images" />
@@ -46,7 +61,7 @@ const RoomCard = () => {
 							<p className="max-w-[300px] mx-auto mb-3 lg:mb-6 ">{room.ShortDescription}</p>
 						</div>
 
-						<Link to={"/"} className="btn btn-secondary btn-sm max-w-[500px] mx-auto">
+						<Link to={`/room/${room.RoomTypeName}`} className="btn btn-secondary btn-sm max-w-[500px] mx-auto">
 							Book Deluxe from ₦24,999
 						</Link>
 					</div>
