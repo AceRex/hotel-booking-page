@@ -20,10 +20,13 @@ const RoomDetails = () => {
 	const Email = useSelector((state) => state.room.email);
 	const Address = useSelector((state) => state.room.address);
 	const Phone = useSelector((state) => state.room.phone);
+	const token = useSelector((state) => state.company.auth_token);
+
+	const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000;
 
 	useEffect(() => {
 		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
-		console.log({ array, Data });
+		console.log({ CheckIn, CheckOut, difference: CheckOut - CheckIn, days: (CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY });
 		setCategory(array);
 		setSampleRoom(array);
 	}, [Data, RoomTypeName]);
@@ -42,16 +45,24 @@ const RoomDetails = () => {
 
 	const BookRoom = async () => {
 		try {
-			await axois.post(`${process.env.REACT_APP_BOOK_ROOM}`, [
+			await axois.post(
+				`${"https://demo.cranesoft-hotel.com/api/v1/Reservation/Create"}`,
+				[
+					{
+						CheckIn,
+						CheckOut,
+						FirstName,
+						LastName,
+						Address,
+						Phone,
+					},
+				],
 				{
-					CheckIn,
-					CheckOut,
-					FirstName,
-					LastName,
-					Address,
-					Phone,
-				},
-			]);
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
 			console.log("booked");
 		} catch (err) {
 			console.log(`Error fetching data: ${err}`);
@@ -64,7 +75,7 @@ const RoomDetails = () => {
 				<>
 					<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
 						<div className="absolute w-full h-full bg-black/75">
-							<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {Data.RoomTypeName} Details</h1>
+							<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {RoomTypeName} Details</h1>
 						</div>
 					</div>
 					<div className="container mx-auto">
@@ -73,7 +84,7 @@ const RoomDetails = () => {
 								<div className="flex flex-col gap-1">
 									<div className="flex justify-between items-center">
 										<p className="text-zinc-500">Room Name </p>
-										<h2 className="">{Data.RoomTypeName}</h2>
+										<h2 className="">{RoomTypeName}</h2>
 									</div>
 								</div>
 								<div className="flex flex-col gap-1">
@@ -91,10 +102,6 @@ const RoomDetails = () => {
 									</div>
 
 									<p className="text-zinc-500"> Until 10:00:00am</p>
-								</div>
-								<div className="flex justify-between items-center mt-5">
-									<h2 className="">{}</h2>
-									<h2 className="">₦{}</h2>
 								</div>
 								<div className="flex justify-between items-center mt-5">
 									<h2 className="">Adult</h2>
@@ -137,7 +144,7 @@ const RoomDetails = () => {
 										</div>
 
 										<button className="btn btn-lg btn-primary w-full " onClick={BookRoom}>
-											Book now for ₦{}
+											Book now for ₦{(((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * 24999).toLocaleString()}
 										</button>
 									</div>
 								</div>
