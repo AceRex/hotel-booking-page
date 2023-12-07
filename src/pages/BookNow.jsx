@@ -3,9 +3,11 @@ import axois from "axios";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RoomActions } from "./../Redux/Slice/RoomSlice";
+import { useParams } from "react-router-dom";
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
+
 	const [category, setCategory] = useState([]);
 	const [sampleRoom, setSampleRoom] = useState(null);
 
@@ -32,10 +34,13 @@ const RoomDetails = () => {
 	}, [Data, RoomTypeName]);
 	console.log(Data);
 
-	// const room = Data.find((room) => {
-	// 	return room.RoomNo === Number(id);
-	// });
-	// console.log(room);
+	useEffect(() => {
+		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
+		console.log({ array, Data });
+
+		// setCatergory(array);
+		// setSampleRoom(array[0]);
+	}, [Data, RoomTypeName]);
 
 	const dateOptions = {
 		year: "numeric",
