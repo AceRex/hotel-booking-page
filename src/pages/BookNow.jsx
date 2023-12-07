@@ -3,7 +3,6 @@ import axois from "axios";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RoomActions } from "./../Redux/Slice/RoomSlice";
-import { useParams } from "react-router-dom";
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
