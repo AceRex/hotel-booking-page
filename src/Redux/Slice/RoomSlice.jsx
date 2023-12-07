@@ -25,6 +25,7 @@ const RoomSlice = createSlice({
 		previewItem: "",
 		previewedRoom: "",
 		total: 0,
+		category: [],
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -88,6 +89,9 @@ const RoomSlice = createSlice({
 			state.total = action.payload;
 		},
 		setAllRooms: (state, action) => {
+			state.allRoom = action.payload;
+		},
+		setCategory: (state, action) => {
 			state.allRoom = action.payload;
 		},
 	},

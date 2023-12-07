@@ -15,7 +15,6 @@ const Room = () => {
 	const dispatch = useDispatch();
 	const Loading = useSelector((state) => state.room.loading);
 
-	// console.log(Data);
 
 	return (
 		<>
@@ -24,10 +23,8 @@ const Room = () => {
 					<h2 className="h3"> Our Hotels</h2>
 				</div>
 
-				{/* Card start */}
-				{/* map data  <RoomCard name, title, e.t.c/> */}
 				<RoomCard />
-				{/* card ends */}
+				
 			</section>
 		</>
 	);

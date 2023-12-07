@@ -80,7 +80,7 @@ const RoomDetails = () => {
 											<KidsDropdown />
 										</div>
 
-										<Link to={`/room/${Data.RoomNo}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
+										<Link to={`/room/${RoomTypeName}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
 											Book now from ₦{}
 										</Link>
 									</div>
