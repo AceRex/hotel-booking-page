@@ -81,7 +81,7 @@ const RoomDetails = () => {
 										</div>
 
 										<Link to={`/room/${RoomTypeName}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
-											Book now from ₦{}
+											Book now from ₦{sampleRoom.Price.toLocaleString()}
 										</Link>
 									</div>
 								</div>

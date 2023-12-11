@@ -66,7 +66,7 @@ const RoomCard = () => {
 						</div>
 
 						<Link to={`/room/${room.RoomTypeName}`} className="btn btn-secondary btn-sm max-w-[500px] mx-auto">
-							Book Deluxe from ₦24,999
+							Book Deluxe from ₦ {room.Price.toLocaleString()}
 						</Link>
 					</div>
 				))}

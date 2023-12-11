@@ -17,11 +17,11 @@ const RoomSlice = createSlice({
 		kid: "0 kids",
 		checkIn: "",
 		checkOut: "",
-		firstName: null,
-		lastName: null,
-		email: null,
-		address: null,
-		phone: null,
+		firstname: "",
+		lastname: "",
+		email: "",
+		address: "",
+		phone: "",
 		previewItem: "",
 		previewedRoom: "",
 		total: 0,
@@ -65,10 +65,10 @@ const RoomSlice = createSlice({
 			state.checkOut = action.payload;
 		},
 		setFirstName: (state, action) => {
-			state.firstName = action.payload;
+			state.firstname = action.payload;
 		},
 		setLastName: (state, action) => {
-			state.lastName = action.payload;
+			state.lastname = action.payload;
 		},
 		setEmail: (state, action) => {
 			state.email = action.payload;
