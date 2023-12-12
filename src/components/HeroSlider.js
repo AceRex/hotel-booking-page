@@ -39,7 +39,7 @@ const HeroSlider = () => {
 				delay: 3000,
 				disableOnInteraction: false,
 			}}
-			className="heroSlider h-[600px] lg:h-[860px]"
+			className="heroSlider h-[400px] lg:h-[500px]"
 		>
 			{slides.map((slide, index) => {
 				const { title, bg, btnText } = slide;

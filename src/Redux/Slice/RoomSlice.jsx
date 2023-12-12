@@ -15,7 +15,7 @@ const RoomSlice = createSlice({
 		menu: "",
 		adult: "1 Adult",
 		kid: "0 kids",
-		checkIn: "",
+		checkIn: new Date(),
 		checkOut: "",
 		firstname: "",
 		lastname: "",

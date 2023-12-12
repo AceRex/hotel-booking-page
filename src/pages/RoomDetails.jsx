@@ -28,7 +28,7 @@ const RoomDetails = () => {
 		<section className="">
 			{sampleRoom ? (
 				<>
-					<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
+					<div className="bg-room bg-cover bg-center h-[400px] relative flex justify-center items-center">
 						<div className="absolute w-full h-full bg-black/75">
 							<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {RoomTypeName} Details</h1>
 						</div>
@@ -36,6 +36,7 @@ const RoomDetails = () => {
 					<div className="container mx-auto">
 						<div className="flex flex-col lg:flex-row h-full py-24">
 							<div className="w-full h-full lg:w-[60%] px-6">
+								<h6 className="text-gray-300">No of Rooms available{category.length}</h6>
 								<h2 className="h2">{RoomTypeName}</h2>
 								<p className="mb-8">{sampleRoom.LongDescription}</p>
 
