@@ -18,11 +18,9 @@ const RoomDetails = () => {
 
 	useEffect(() => {
 		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
-		console.log({ array, Data });
 		setCategory(array);
 		setSampleRoom(array[0]);
 	}, [Data, RoomTypeName]);
-	console.log(Data);
 
 	return (
 		<section className="">

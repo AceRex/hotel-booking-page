@@ -31,14 +31,6 @@ const RoomDetails = () => {
 		setSampleRoom(array.length > 0 ? array[0] : null);
 	}, [Data, RoomTypeName]);
 
-	useEffect(() => {
-		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
-		console.log({ array, Data });
-
-		// setCatergory(array);
-		// setSampleRoom(array[0]);
-	}, [Data, RoomTypeName]);
-
 	const dateOptions = {
 		year: "numeric",
 		month: "numeric",
@@ -92,7 +84,11 @@ const RoomDetails = () => {
 					},
 				}
 			);
-			console.log("booked");
+			dispatch(RoomActions.setFirstName(""));
+			dispatch(RoomActions.setLastName(""));
+			dispatch(RoomActions.setEmail(""));
+			dispatch(RoomActions.setAddress(""));
+			dispatch(RoomActions.setPhone(""));
 			window.location.href = "/";
 		} catch (err) {
 			console.log(`Error fetching data: ${err}`);
@@ -149,32 +145,67 @@ const RoomDetails = () => {
 										<div className="flex gap-6 h-full">
 											<div className="w-full h-full flex flex-col ">
 												<h2>FirstName</h2>
-												<input type="text" placeholder="John" value={FirstName} onChange={(e) => dispatch(RoomActions.setFirstName(e.target.value))} className="p-4" required />
+												<input
+													type="text"
+													placeholder="John"
+													value={FirstName}
+													onChange={(e) => dispatch(RoomActions.setFirstName(e.target.value))}
+													className="p-4 placeholder-gray-500 placeholder-opacity-50"
+													required
+												/>
 											</div>
 											<div className="w-full h-full flex flex-col ">
 												<h2>LastName</h2>
-												<input type="text" placeholder="Doe" value={LastName} onChange={(e) => dispatch(RoomActions.setLastName(e.target.value))} className="p-4" required />
+												<input
+													type="text"
+													placeholder="Doe"
+													value={LastName}
+													onChange={(e) => dispatch(RoomActions.setLastName(e.target.value))}
+													className="p-4 placeholder-gray-500 placeholder-opacity-50"
+													required
+												/>
 											</div>
 										</div>
 										<div className="flex gap-6 h-full">
 											<div className="w-full h-full flex flex-col ">
 												<h2>Email</h2>
-												<input type="email" placeholder="johndoe@email.com" value={Email} onChange={(e) => dispatch(RoomActions.setEmail(e.target.value))} className="p-4" required />
+												<input
+													type="email"
+													placeholder="johndoe@email.com"
+													value={Email}
+													onChange={(e) => dispatch(RoomActions.setEmail(e.target.value))}
+													className="p-4 placeholder-gray-500 placeholder-opacity-50"
+													required
+												/>
 											</div>
 											<div className="w-full h-full flex flex-col ">
 												<h2>Phone number</h2>
-												<input type="tel" placeholder="+2348848493" value={Phone} onChange={(e) => dispatch(RoomActions.setPhone(e.target.value))} className="p-4" required />
+												<input
+													type="tel"
+													placeholder="+2348848493"
+													value={Phone}
+													onChange={(e) => dispatch(RoomActions.setPhone(e.target.value))}
+													className="p-4 placeholder-gray-500 placeholder-opacity-50"
+													required
+												/>
 											</div>
 										</div>
 										<div className="flex gap-6 h-full">
 											<div className="w-full h-full flex flex-col ">
 												<h2>Address</h2>
-												<textarea type="text" placeholder="7, opebi street " value={Address} onChange={(e) => dispatch(RoomActions.setAddress(e.target.value))} className="p-4" required />
+												<textarea
+													type="text"
+													placeholder="7, opebi street "
+													value={Address}
+													onChange={(e) => dispatch(RoomActions.setAddress(e.target.value))}
+													className="p-4 placeholder-gray-500 placeholder-opacity-50"
+													required
+												/>
 											</div>
 										</div>
 
 										<button className="btn btn-lg btn-primary w-full " onClick={BookRoom}>
-											Book now for ₦{(((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || 0)).toLocaleString()}
+											Book now for ₦ {(Math.ceil((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || sampleRoom.Price)).toLocaleString()}
 										</button>
 									</div>
 								</div>
