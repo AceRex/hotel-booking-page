@@ -9,10 +9,10 @@ import store from "./Redux/Store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<Provider store={store}>
-		<RoomProvider>
+		{/* <RoomProvider> */}
 			<React.StrictMode>
 				<App />
 			</React.StrictMode>
-		</RoomProvider>
+		{/* </RoomProvider> */}
 	</Provider>
 );

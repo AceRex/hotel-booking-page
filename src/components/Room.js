@@ -12,22 +12,18 @@ import Img1 from "../assets/img/heroSlider/1.jpg";
 import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
 
 const Room = () => {
-	const dispatch = useDispatch();
-	const Loading = useSelector((state) => state.room.loading);
+  const dispatch = useDispatch();
+  const Loading = useSelector((state) => state.room.loading);
 
+  return (
+    <section id="Room" className="py-24">
+      <div className="text-center">
+        <h2 className="h3"> Our Hotels</h2>
+      </div>
 
-	return (
-		<>
-			<section className="py-24">
-				<div className="text-center">
-					<h2 className="h3"> Our Hotels</h2>
-				</div>
-
-				<RoomCard />
-				
-			</section>
-		</>
-	);
+      <RoomCard />
+    </section>
+  );
 };
 
 export default Room;
