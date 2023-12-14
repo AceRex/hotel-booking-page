@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import AdultsDropdown from "../components/AdultsDropdown";
 import KidsDropdown from "../components/KidsDropdown";
@@ -8,18 +8,21 @@ import CheckIn from "../components/CheckIn";
 import CheckOut from "../components/CheckOut";
 import { FaCat, FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { RoomActions } from "../Redux/Slice/RoomSlice";
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
-	const [category, setCategory] = useState([]);
-	const [sampleRoom, setSampleRoom] = useState(null);
+	const dispatch = useDispatch();
+	const category = useSelector((state) => state.room.category);
+	const sampleRoom = useSelector((state) => state.room.sampleRoom);
 
 	const Data = useSelector((state) => state.room.data);
 
 	useEffect(() => {
 		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
-		setCategory(array);
-		setSampleRoom(array[0]);
+		dispatch(RoomActions.setCategory(array));
+		dispatch(RoomActions.setSampleRoom(array[0]));
+		// setSampleRoom(array[0]);
 	}, [Data, RoomTypeName]);
 
 	return (
@@ -80,7 +83,7 @@ const RoomDetails = () => {
 										</div>
 
 										<Link to={`/room/${RoomTypeName}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">
-											Book now from ₦{sampleRoom.Price.toLocaleString()}
+											Book now from ₦{sampleRoom && sampleRoom.Price ? sampleRoom.Price.toLocaleString() : 0}
 										</Link>
 									</div>
 								</div>

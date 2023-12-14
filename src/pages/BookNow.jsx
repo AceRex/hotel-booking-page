@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RoomActions } from "./../Redux/Slice/RoomSlice";
+import PreviewBooking from "./PreviewBooking";
 import axios from "axios";
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
+	const [showModal, setShowModal] = useState(false);
 
-	const [category, setCategory] = useState([]);
-	const [sampleRoom, setSampleRoom] = useState(null);
+	const sampleRoom = useSelector((state) => state.room.sampleRoom);
 
 	const dispatch = useDispatch();
 	const Data = useSelector((state) => state.room.data);
@@ -21,14 +22,15 @@ const RoomDetails = () => {
 	const Email = useSelector((state) => state.room.email);
 	const Address = useSelector((state) => state.room.address);
 	const Phone = useSelector((state) => state.room.phone);
-	const token = useSelector((state) => state.company.auth_token);
+
+	const previewItem = useSelector((state) => state.room.previewItem);
 
 	const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000;
 
 	useEffect(() => {
 		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
-		setCategory(array);
-		setSampleRoom(array.length > 0 ? array[0] : null);
+		dispatch(RoomActions.setCategory(array));
+		dispatch(RoomActions.setSampleRoom(array.length > 0 ? array[0] : null));
 	}, [Data, RoomTypeName]);
 
 	const dateOptions = {
@@ -39,60 +41,9 @@ const RoomDetails = () => {
 	// const RoomId = sampleRoom.RoomTypeId;
 	// console.log(RoomId);
 
-	const BookRoom = async () => {
-		try {
-			await axios.post(
-				`${"https://demo.cranesoft-hotel.com/api/v1/Reservation/Create"}`,
-				{
-					guestName: FirstName.concat(LastName),
-					Title: "Mr",
-					Email: Email,
-					Phone: Phone,
-					Address: Address,
-					City: "",
-					State: "",
-					Country: "",
-					ZipCode: "",
-					Sex: "",
-					Image: "",
-					passimage: "",
-					passtype: "",
-					passcity: "",
-					passcountry: "",
-					passno: "",
-					passexpire: "",
-					billto: "Guest",
-					blacklist: "",
-					guesttypeid: "",
-					Note: "",
-					CheckInDate: CheckIn,
-					CheckOutDate: CheckOut,
-					roomtype: sampleRoom.RoomTypeId,
-					ratetype: sampleRoom.RoomTypeId,
-					AdultNo: Adult,
-					ChildNo: Kids,
-					Rate: sampleRoom.Price,
-					paid_amount: "",
-					reservetype: "",
-					BookingSource: "",
-					BusinessSource: "",
-					AgentId: 1,
-				},
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				}
-			);
-			dispatch(RoomActions.setFirstName(""));
-			dispatch(RoomActions.setLastName(""));
-			dispatch(RoomActions.setEmail(""));
-			dispatch(RoomActions.setAddress(""));
-			dispatch(RoomActions.setPhone(""));
-			window.location.href = "/";
-		} catch (err) {
-			console.log(`Error fetching data: ${err}`);
-		}
+	const handlePreviewItem = (item) => {
+		dispatch(RoomActions.setPreviewItem(!previewItem));
+		dispatch(RoomActions.setPreviewedRoom(item));
 	};
 
 	return (
@@ -104,6 +55,7 @@ const RoomDetails = () => {
 							<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {RoomTypeName} Details</h1>
 						</div>
 					</div>
+					{previewItem ? <PreviewBooking handleClose={handlePreviewItem} /> : null}
 					<div className="container mx-auto">
 						<div className="flex flex-col lg:flex-row h-full py-24 gap-6">
 							<div className="w-full h-full lg:w-[30%] px-6 bg-accent/20 py-4">
@@ -204,9 +156,12 @@ const RoomDetails = () => {
 											</div>
 										</div>
 
-										<button className="btn btn-lg btn-primary w-full " onClick={BookRoom}>
+										{/* <button className="btn btn-lg btn-primary w-full " onClick={BookRoom}>
 											Book now for ₦ {(Math.ceil((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || sampleRoom.Price)).toLocaleString()}
-										</button>
+										</button> */}
+										<a href="#" className="btn btn-lg btn-primary w-full" onClick={() => handlePreviewItem(sampleRoom)}>
+											Book now for ₦ {(Math.ceil((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || sampleRoom.Price)).toLocaleString()}
+										</a>
 									</div>
 								</div>
 							</div>

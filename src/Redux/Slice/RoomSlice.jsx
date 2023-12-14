@@ -22,10 +22,11 @@ const RoomSlice = createSlice({
 		email: "",
 		address: "",
 		phone: "",
-		previewItem: "",
+		previewItem: false,
 		previewedRoom: "",
 		total: 0,
 		category: [],
+		sampleRoom: [],
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -92,7 +93,10 @@ const RoomSlice = createSlice({
 			state.allRoom = action.payload;
 		},
 		setCategory: (state, action) => {
-			state.allRoom = action.payload;
+			state.category = action.payload;
+		},
+		setSampleRoom: (state, action) => {
+			state.sampleRoom = action.payload;
 		},
 	},
 });
