@@ -6,17 +6,17 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router";
 
 const App = () => {
-    const { getTokenDetails } = Initialize();
+	const { getTokenDetails } = Initialize();
 
-    useEffect(() => {
+	useEffect(() => {
 		getTokenDetails();
-    }, []);
-  return (
-    <div>
-      <Header />
-      <RouterProvider router={router} />
-    </div>
-  );
+	}, [getTokenDetails]);
+	return (
+		<div>
+			<Header />
+			<RouterProvider router={router} />
+		</div>
+	);
 };
 
 export default App;
