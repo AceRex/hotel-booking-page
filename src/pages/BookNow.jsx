@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,  } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RoomActions } from "./../Redux/Slice/RoomSlice";
 import PreviewBooking from "./PreviewBooking";
-import axios from "axios";
+
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
-	const [showModal, setShowModal] = useState(false);
 
 	const sampleRoom = useSelector((state) => state.room.sampleRoom);
 

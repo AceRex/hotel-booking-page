@@ -9,6 +9,7 @@ import CheckOut from "../components/CheckOut";
 import { FaCat, FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RoomActions } from "../Redux/Slice/RoomSlice";
+import Carousel from "../components/Carousel";
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
@@ -37,15 +38,11 @@ const RoomDetails = () => {
 					<div className="container mx-auto">
 						<div className="flex flex-col lg:flex-row h-full py-24">
 							<div className="w-full h-full lg:w-[60%] px-6">
-								<h6 className="text-gray-300">No of Rooms available{category.length}</h6>
+								<h6 className="text-gray-500">No of Rooms available {category.length}</h6>
 								<h2 className="h2">{RoomTypeName}</h2>
 								<p className="mb-8">{sampleRoom.LongDescription}</p>
 
-								<div className="flex">
-									<img className="mb-8" src={sampleRoom.GalleryImage1} alt="house" />
-									<img className="mb-8" src={sampleRoom.GalleryImage2} alt="house" />
-									<img className="mb-8" src={sampleRoom.GalleryImage3} alt="house" />
-								</div>
+								<Carousel />
 
 								{/* <div className="mt-12">
 							<h3 className="h3 mb-3">Room Facilities</h3>
