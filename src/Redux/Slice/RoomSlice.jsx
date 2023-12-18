@@ -1,4 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+const checkoutDate = new Date();
+checkoutDate.setDate(checkoutDate.getDate() + 1);
+
+// const formattedCheckoutDate = `${checkoutDate.getFullYear()}-${(checkoutDate.getMonth() + 1).toString().padStart(2, "0")}-${checkoutDate.getDate().toString().padStart(2, "0")} ${checkoutDate
+// 	.getHours()
+// 	.toString()
+// 	.padStart(2, "0")}:${checkoutDate.getMinutes().toString().padStart(2, "0")}:${checkoutDate.getSeconds().toString().padStart(2, "0")}`;
 
 const RoomSlice = createSlice({
 	name: "room",
@@ -16,7 +23,7 @@ const RoomSlice = createSlice({
 		adult: "1 Adult",
 		kid: "0 kids",
 		checkIn: new Date(),
-		checkOut: "",
+		checkOut: checkoutDate,
 		firstname: "",
 		lastname: "",
 		email: "",
@@ -64,6 +71,12 @@ const RoomSlice = createSlice({
 		},
 		setCheckOut: (state, action) => {
 			state.checkOut = action.payload;
+		},
+		autoFillCheckOut: (state, action) => {
+			const checkInDate = state.checkIn;
+			const nextDay = new Date(checkInDate);
+			nextDay.setDate(nextDay.getDate() + 1); // Add one day to the check-in date
+			state.checkOut = nextDay;
 		},
 		setFirstName: (state, action) => {
 			state.firstname = action.payload;
