@@ -1,11 +1,9 @@
 import axios from "axios";
 import { BsArrowBarLeft } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { RoomActions } from "../Redux/Slice/RoomSlice";
 
 const PreviewBooking = () => {
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const previewItem = useSelector((state) => state.room.previewItem);
 

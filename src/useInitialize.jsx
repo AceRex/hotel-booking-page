@@ -1,14 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { RoomActions } from "./Redux/Slice/RoomSlice";
 import { CompanyActions } from "./Redux/Slice/Company_dtl";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const Initialize = () => {
 	const dispatch = useDispatch();
-	const [token, setToken] = useState();
-	const { m_id } = useParams();
+	// const [token, setToken] = useState();
+	// const { m_id } = useParams();
 
 	const T_URL = extractSubDomainFromURL();
 

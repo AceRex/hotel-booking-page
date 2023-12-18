@@ -1,15 +1,11 @@
 import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Img3 from "../assets/img/heroSlider/3.jpg";
 import { useEffect, useState } from "react";
-import { RoomActions } from "../Redux/Slice/RoomSlice";
 
 const RoomCard = () => {
-	const dispatch = useDispatch();
 	const Data = useSelector((state) => state.room.data);
-	// const Category = useSelector((state) => state.room.category);
-	// console.log(Category);
 
 	const [categorys, setCategorys] = useState([]);
 

@@ -24,7 +24,7 @@ const RoomDetails = () => {
 		dispatch(RoomActions.setCategory(array));
 		dispatch(RoomActions.setSampleRoom(array[0]));
 		// setSampleRoom(array[0]);
-	}, [Data, RoomTypeName]);
+	}, [Data, RoomTypeName, dispatch]);
 
 	return (
 		<section className="">
@@ -41,6 +41,12 @@ const RoomDetails = () => {
 								<h6 className="text-gray-500">No of Rooms available {category.length}</h6>
 								<h2 className="h2">{RoomTypeName}</h2>
 								<p className="mb-8">{sampleRoom.LongDescription}</p>
+
+								{/* <div className="flex">
+									<img className="mb-8" src={Img} alt="house" />
+									<img className="mb-8" src={Img2} alt="house" />
+									<img className="mb-8" src={Img3} alt="house" />
+								</div> */}
 
 								<Carousel />
 

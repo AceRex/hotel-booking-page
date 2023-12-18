@@ -1,9 +1,8 @@
-import React, { useEffect,  } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RoomActions } from "./../Redux/Slice/RoomSlice";
 import PreviewBooking from "./PreviewBooking";
-
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
@@ -30,7 +29,7 @@ const RoomDetails = () => {
 		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
 		dispatch(RoomActions.setCategory(array));
 		dispatch(RoomActions.setSampleRoom(array.length > 0 ? array[0] : null));
-	}, [Data, RoomTypeName]);
+	}, [Data, RoomTypeName, dispatch]);
 
 	const dateOptions = {
 		year: "numeric",
@@ -158,9 +157,9 @@ const RoomDetails = () => {
 										{/* <button className="btn btn-lg btn-primary w-full " onClick={BookRoom}>
 											Book now for ₦ {(Math.ceil((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || sampleRoom.Price)).toLocaleString()}
 										</button> */}
-										<a href="#" className="btn btn-lg btn-primary w-full" onClick={() => handlePreviewItem(sampleRoom)}>
+										<button href="#" className="btn btn-lg btn-primary w-full cursor-pointer" onClick={() => handlePreviewItem(sampleRoom)}>
 											Book now for ₦ {(Math.ceil((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || sampleRoom.Price)).toLocaleString()}
-										</a>
+										</button>
 									</div>
 								</div>
 							</div>
