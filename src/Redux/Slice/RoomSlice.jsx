@@ -34,6 +34,7 @@ const RoomSlice = createSlice({
 		total: 0,
 		category: [],
 		sampleRoom: [],
+		error: "",
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -110,6 +111,9 @@ const RoomSlice = createSlice({
 		},
 		setSampleRoom: (state, action) => {
 			state.sampleRoom = action.payload;
+		},
+		setError: (state, action) => {
+			state.error = action.payload;
 		},
 	},
 });

@@ -52,9 +52,15 @@ const Initialize = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
+			console.log(response);
+			dispatch(RoomActions.setError(response.message));
+
 			dispatch(RoomActions.setData(response.data.roomsInfo));
 		} catch (error) {
-			console.log(error);
+			const errorMessage = error.response ? error.response.data.message : "An error occurred";
+			dispatch(RoomActions.setError(errorMessage));
+		} finally {
+			dispatch(RoomActions.setLoading(false));
 		}
 	};
 	return { getTokenDetails: tokenDetails };
