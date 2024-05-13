@@ -8,6 +8,7 @@ const RoomCard = () => {
 	const Data = useSelector((state) => state.room.data);
 
 	const [categorys, setCategorys] = useState([]);
+	console.log(categorys);
 
 	useEffect(() => {
 		const array = [];

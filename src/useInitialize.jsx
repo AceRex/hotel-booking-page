@@ -12,7 +12,7 @@ const Initialize = () => {
 
 	const T_URL = extractSubDomainFromURL();
 
-	const base_URL = `https://${T_URL}.cranesoft-hotel.com`;
+	const base_URL = `https://${T_URL}.cranesoftapp.com`;
 
 	function extractSubDomainFromURL() {
 		try {
@@ -34,6 +34,7 @@ const Initialize = () => {
 		try {
 			const response = await axios.get(`${base_URL}/tenantApiToken`);
 			const token = response.data.tenantAPIToken;
+			console.log(response);
 
 			dispatch(CompanyActions.setAuthToken(response.data.tenantAPIToken));
 

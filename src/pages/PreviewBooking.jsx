@@ -34,7 +34,7 @@ const PreviewBooking = () => {
 	const BookRoom = async () => {
 		try {
 			await axios.post(
-				`${"https://demo.cranesoft-hotel.com/api/v1/Reservation/Create"}`,
+				`${"https://demo.cranesoftapp.com/api/v1/Reservation/Create"}`,
 				{
 					guestName: FirstName.concat(LastName),
 					Title: "Mr",
