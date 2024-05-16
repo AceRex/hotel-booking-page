@@ -50,7 +50,7 @@ const RoomDetails = () => {
 				<>
 					<div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
 						<div className="absolute w-full h-full bg-black/75">
-							<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {RoomTypeName} Details</h1>
+							<h1 className="text-6xl text-white z-20 font-primary text-center mt-52"> {RoomTypeName} Details</h1>
 						</div>
 					</div>
 					{previewItem ? <PreviewBooking handleClose={handlePreviewItem} /> : null}
@@ -92,8 +92,8 @@ const RoomDetails = () => {
 								<div className=" py-8 px-6 bg-accent/20 mb-12 ">
 									<div className="flex flex-col space-y-4 mb-4">
 										<h3>Enter your details</h3>
-										<div className="flex gap-6 h-full">
-											<div className="w-full h-full flex flex-col ">
+										<div className="flex flex-col sm:flex-row gap-6 h-full">
+											<div className="w-full h-full flex flex-col gap-2">
 												<h2>FirstName</h2>
 												<input
 													type="text"
@@ -104,7 +104,7 @@ const RoomDetails = () => {
 													required
 												/>
 											</div>
-											<div className="w-full h-full flex flex-col ">
+											<div className="w-full h-full flex flex-col gap-2">
 												<h2>LastName</h2>
 												<input
 													type="text"
@@ -116,8 +116,8 @@ const RoomDetails = () => {
 												/>
 											</div>
 										</div>
-										<div className="flex gap-6 h-full">
-											<div className="w-full h-full flex flex-col ">
+										<div className="flex flex-col sm:flex-row gap-6 h-full">
+											<div className="w-full h-full flex flex-col gap-2">
 												<h2>Email</h2>
 												<input
 													type="email"
@@ -128,7 +128,7 @@ const RoomDetails = () => {
 													required
 												/>
 											</div>
-											<div className="w-full h-full flex flex-col ">
+											<div className="w-full h-full flex flex-col gap-2 ">
 												<h2>Phone number</h2>
 												<input
 													type="tel"
@@ -141,7 +141,7 @@ const RoomDetails = () => {
 											</div>
 										</div>
 										<div className="flex gap-6 h-full">
-											<div className="w-full h-full flex flex-col ">
+											<div className="w-full h-full flex flex-col gap-2">
 												<h2>Address</h2>
 												<textarea
 													type="text"
