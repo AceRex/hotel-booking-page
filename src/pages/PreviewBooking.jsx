@@ -9,10 +9,13 @@ const PreviewBooking = () => {
 
 	const token = useSelector((state) => state.company.auth_token);
 	const sampleRoom = useSelector((state) => state.room.sampleRoom);
+
 	const CheckIn = useSelector((state) => state.room.checkIn);
 	const CheckOut = useSelector((state) => state.room.checkOut);
 	const Adult = useSelector((state) => state.room.adult);
 	const Kids = useSelector((state) => state.room.kid);
+	const Branch = useSelector((state) => state.room.branch);
+
 	const Email = useSelector((state) => state.room.email);
 	const Address = useSelector((state) => state.room.address);
 	const Phone = useSelector((state) => state.room.phone);
@@ -41,6 +44,7 @@ const PreviewBooking = () => {
 					Email: Email,
 					Phone: Phone,
 					Address: Address,
+					branch: Branch,
 					City: "",
 					State: "",
 					Country: "",
@@ -101,6 +105,10 @@ const PreviewBooking = () => {
 						<div className="flex justify-between items-center">
 							<p className="text-zinc-500 font-bold my-1">Room Name </p>
 							<h2 className="">{sampleRoom.RoomTypeName}</h2>
+						</div>
+						<div className="flex justify-between items-center">
+							<p className="text-zinc-500 font-bold my-1">Branch</p>
+							<h2 className="">{Branch}</h2>
 						</div>
 						<div className="flex justify-between items-center">
 							<p className="text-zinc-500 font-bold my-1">CheckIn </p>

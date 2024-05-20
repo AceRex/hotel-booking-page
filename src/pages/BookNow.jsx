@@ -11,10 +11,12 @@ const RoomDetails = () => {
 
 	const dispatch = useDispatch();
 	const Data = useSelector((state) => state.room.data);
+
 	const CheckIn = useSelector((state) => state.room.checkIn);
 	const CheckOut = useSelector((state) => state.room.checkOut);
 	const Adult = useSelector((state) => state.room.adult);
 	const Kids = useSelector((state) => state.room.kid);
+	const Branch = useSelector((state) => state.room.branch);
 	const FirstName = useSelector((state) => state.room.firstname);
 	const LastName = useSelector((state) => state.room.lastname);
 	const Email = useSelector((state) => state.room.email);
@@ -86,6 +88,10 @@ const RoomDetails = () => {
 								<div className="flex justify-between items-center mt-5">
 									<h2 className="">Kids</h2>
 									<h2 className="">{Kids}</h2>
+								</div>
+								<div className="flex justify-between items-center mt-5">
+									<h2 className="">Branch</h2>
+									<h2 className="">{Branch}</h2>
 								</div>
 							</div>
 							<div className="w-full h-full lg:w-[60%]">

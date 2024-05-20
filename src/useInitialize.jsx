@@ -34,11 +34,12 @@ const Initialize = () => {
 		try {
 			const response = await axios.get(`${base_URL}/tenantApiToken`);
 			const token = response.data.tenantAPIToken;
-			console.log(response);
 
 			dispatch(CompanyActions.setAuthToken(response.data.tenantAPIToken));
 
 			await companyDetails(token);
+			await branchDetails(token);
+			await PaymentInfo(token);
 		} catch (error) {
 			console.warn(error);
 		}
@@ -62,6 +63,33 @@ const Initialize = () => {
 			dispatch(RoomActions.setError(errorMessage));
 		} finally {
 			dispatch(RoomActions.setLoading(false));
+		}
+	};
+
+	const branchDetails = async (token) => {
+		try {
+			const response = await axios.get(`${base_URL}/api/v1/Branch`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			console.log(response);
+			dispatch(RoomActions.setBranchList(response.data));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const PaymentInfo = async (token) => {
+		try {
+			const response = await axios.get(`${base_URL}/api/v1/PaymentInfo`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			console.log(response);
+		} catch (error) {
+			console.log(error);
 		}
 	};
 	return { getTokenDetails: tokenDetails };

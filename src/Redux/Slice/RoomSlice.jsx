@@ -35,6 +35,7 @@ const RoomSlice = createSlice({
 		category: [],
 		sampleRoom: [],
 		error: "",
+		branchList: [],
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -114,6 +115,9 @@ const RoomSlice = createSlice({
 		},
 		setError: (state, action) => {
 			state.error = action.payload;
+		},
+		setBranchList: (state, action) => {
+			state.branchList = action.payload;
 		},
 	},
 });

@@ -10,6 +10,7 @@ import { FaCat, FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RoomActions } from "../Redux/Slice/RoomSlice";
 import Carousel from "../components/Carousel";
+import Branch from "../components/branch";
 
 const RoomDetails = () => {
 	const { RoomTypeName } = useParams();
@@ -83,6 +84,9 @@ const RoomDetails = () => {
 										</div>
 										<div className="h-[60px]">
 											<KidsDropdown />
+										</div>
+										<div className="h-[60px]">
+											<Branch />
 										</div>
 
 										<Link to={`/room/${RoomTypeName}/booknow`} className="btn btn-lg btn-primary w-full max-w-[300px] mx-auto">

@@ -2,6 +2,7 @@ import AdultsDropdown from "../components/AdultsDropdown";
 import KidsDropdown from "./KidsDropdown";
 import CheckIn from "../components/CheckIn";
 import CheckOut from "../components/CheckOut";
+import Branch from "./branch";
 
 const BookForm = () => {
 	return (
@@ -18,6 +19,9 @@ const BookForm = () => {
 				</div>
 				<div className="flex-1 border-r">
 					<KidsDropdown />
+				</div>
+				<div className="flex-1 border-r">
+					<Branch />
 				</div>
 
 				<button type="submit" className="btn btn-primary">
