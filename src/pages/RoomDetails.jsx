@@ -33,7 +33,7 @@ const RoomDetails = () => {
 				<>
 					<div className="bg-room bg-cover bg-center h-[400px] relative flex justify-center items-center">
 						<div className="absolute w-full h-full bg-black/75">
-							<h1 className="text-6xl text-white z-20 font-primary text-center sm:mt-52"> {RoomTypeName} Details</h1>
+							<h1 className="text-6xl text-white z-20 font-primary text-center max-sm:mt-36 uppercase"> {RoomTypeName} Details</h1>
 						</div>
 					</div>
 					<div className="container mx-auto">
@@ -68,7 +68,7 @@ const RoomDetails = () => {
 							</p>
 						</div> */}
 							</div>
-							<div className="w-full h-full lg:w-[40%]">
+							<div className="w-full h-full lg:w-[40%] max-md:mt-10">
 								<div className=" py-8 px-6 bg-accent/20 mb-12 ">
 									<div className="flex flex-col space-y-4 mb-4">
 										<h3>Your Reservation</h3>

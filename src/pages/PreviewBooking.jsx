@@ -88,9 +88,9 @@ const PreviewBooking = () => {
 	};
 
 	return (
-		<div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
-			<div className="w-[600px] flex flex-col">
-				<div className="bg-white p-12 rounded">
+		<div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex ">
+			<div className="w-[600px] max-md:w-[100%] flex flex-col ">
+				<div className="bg-white p-12 max-md:p-2 max-md:pt-12 rounded">
 					<button className="flex items-center gap-x-2 pointer" onClick={handleClose}>
 						<div className="text-accent">
 							<BsArrowBarLeft className="text-[30px]" />
@@ -101,7 +101,7 @@ const PreviewBooking = () => {
 						<h2 className="text-accent">Summary of booking</h2>
 					</div>
 
-					<div className="flex flex-col gap-1 p-10">
+					<div className="flex flex-col gap-1 p-5 max-md:py-10">
 						<div className="flex justify-between items-center">
 							<p className="text-zinc-500 font-bold my-1">Room Name </p>
 							<h2 className="">{sampleRoom.RoomTypeName}</h2>
