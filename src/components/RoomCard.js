@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 
 const RoomCard = () => {
 	const Data = useSelector((state) => state.room.data);
-
 	const [categorys, setCategorys] = useState([]);
-	console.log(categorys);
 
 	useEffect(() => {
 		const array = [];
@@ -28,7 +26,7 @@ const RoomCard = () => {
 				{categorys.map((room) => (
 					<div className="bg-red shadow-2xl min-h-[500px] group">
 						<div className="overflow-hidden">
-							<img className="group-hover:scale-110 transition-all duration-300 w-full" src={"" || Img3} alt="room images" />
+							<img className="group-hover:scale-110 transition-all duration-300 w-full" src={Img3} alt="room images" />
 						</div>
 
 						{/* DETAILS */}

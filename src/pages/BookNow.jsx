@@ -89,10 +89,6 @@ const RoomDetails = () => {
 									<h2 className="">Kids</h2>
 									<h2 className="">{Kids}</h2>
 								</div>
-								<div className="flex justify-between items-center mt-5">
-									<h2 className="">Branch</h2>
-									<h2 className="">{Branch}</h2>
-								</div>
 							</div>
 							<div className="w-full h-full lg:w-[60%]">
 								<div className=" py-8 px-6 bg-accent/20 mb-12 ">

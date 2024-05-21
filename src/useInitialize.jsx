@@ -14,6 +14,8 @@ const Initialize = () => {
 
 	const base_URL = `https://${T_URL}.cranesoftapp.com`;
 
+	dispatch(CompanyActions.setBaseUrl(base_URL));
+
 	function extractSubDomainFromURL() {
 		try {
 			const parsedURL = new URL(window.location.href);
@@ -54,7 +56,7 @@ const Initialize = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			console.log(response);
+
 			dispatch(RoomActions.setError(response.message));
 
 			dispatch(RoomActions.setData(response.data.roomsInfo));
@@ -73,8 +75,9 @@ const Initialize = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			console.log(response);
+
 			dispatch(RoomActions.setBranchList(response.data));
+			dispatch(RoomActions.setBranch(response.data[0].id));
 		} catch (error) {
 			console.log(error);
 		}
@@ -87,7 +90,6 @@ const Initialize = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			console.log(response);
 		} catch (error) {
 			console.log(error);
 		}

@@ -36,6 +36,8 @@ const RoomSlice = createSlice({
 		sampleRoom: [],
 		error: "",
 		branchList: [],
+		formatcheckIn: "",
+		formatcheckOut: "",
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -118,6 +120,12 @@ const RoomSlice = createSlice({
 		},
 		setBranchList: (state, action) => {
 			state.branchList = action.payload;
+		},
+		setFormatedCheckIn: (state, action) => {
+			state.formatcheckIn = action.payload;
+		},
+		setFormatedCheckOut: (state, action) => {
+			state.formatcheckOut = action.payload;
 		},
 	},
 });

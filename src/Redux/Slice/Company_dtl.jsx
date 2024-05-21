@@ -9,6 +9,7 @@ const CompanySlice = createSlice({
 		c_url: "",
 		auth_token: "",
 		m_id: "",
+		baseUrl: "",
 	},
 	reducers: {
 		setCompanyName: (state, action) => {
@@ -25,6 +26,9 @@ const CompanySlice = createSlice({
 		},
 		setAuthToken: (state, action) => {
 			state.auth_token = action.payload;
+		},
+		setBaseUrl: (state, action) => {
+			state.baseUrl = action.payload;
 		},
 	},
 });
