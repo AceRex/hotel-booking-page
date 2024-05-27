@@ -10,6 +10,9 @@ const CompanySlice = createSlice({
 		auth_token: "",
 		m_id: "",
 		baseUrl: "",
+		isPaystack: "",
+		publickey: "",
+		payment: [],
 	},
 	reducers: {
 		setCompanyName: (state, action) => {
@@ -29,6 +32,18 @@ const CompanySlice = createSlice({
 		},
 		setBaseUrl: (state, action) => {
 			state.baseUrl = action.payload;
+		},
+		setM_id: (state, action) => {
+			state.m_id = action.payload;
+		},
+		setIspaystack: (state, action) => {
+			state.isPaystack = action.payload;
+		},
+		setPublicKey: (state, action) => {
+			state.publickey = action.payload;
+		},
+		setPayment: (state, action) => {
+			state.payment = action.payload;
 		},
 	},
 });

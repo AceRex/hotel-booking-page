@@ -4,9 +4,17 @@ import { Link } from "react-router-dom";
 import Img3 from "../assets/img/heroSlider/3.jpg";
 import { useEffect, useState } from "react";
 
+// https://cranesoft-app.s3.eu-central-1.amazonaws.com/uploads/tenant/588dff5a-1817-4925-98bd-0de192796cb0/rooms/presidential_gallery1.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUIJF4267JWWNIUUR%2F20240523%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240523T092624Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=af173e6699c902754f2ded01736fb1921753d14fac80d00b8b61aeebd0b53002
+// https://cranesoft-app.s3.eu-central-1.amazonaws.com/uploads/tenant/588dff5a-1817-4925-98bd-0de192796cb0/rooms/roomimage.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUIJF4267JWWNIUUR%2F20240523%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240523T101104Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=cc565eee85c78ab0e9d541a457acf76e8e85bbb1e696e23dbbda74f37f1a6e57
 const RoomCard = () => {
 	const Data = useSelector((state) => state.room.data);
+	const baseUrl = useSelector((state) => state.company.baseUrl);
+	const tenant_id = useSelector((state) => state.company.m_id);
 	const [categorys, setCategorys] = useState([]);
+	const imgURL = `${baseUrl}/storage/uploads/tenant/${tenant_id}/rooms/`;
+	// console.log(JSON.parse(categorys[1]?.GalleryImage1));
+
+	// https://demo.cranesoftapp.com/storage/uploads/tenant/588dff5a-1817-4925-98bd-0de192796cb0/rooms/deluxe_gallery1.png
 
 	useEffect(() => {
 		const array = [];
@@ -26,7 +34,7 @@ const RoomCard = () => {
 				{categorys.map((room) => (
 					<div className="bg-red shadow-2xl min-h-[500px] group">
 						<div className="overflow-hidden">
-							<img className="group-hover:scale-110 transition-all duration-300 w-full" src={Img3} alt="room images" />
+							<img className="group-hover:scale-110 transition-all duration-300 w-full" src={room.DefaultImage ? imgURL + room.DefaultImage : Img3} alt="room images" />
 						</div>
 
 						{/* DETAILS */}

@@ -38,6 +38,7 @@ const RoomSlice = createSlice({
 		branchList: [],
 		formatcheckIn: "",
 		formatcheckOut: "",
+		galleryImage: [],
 	},
 	reducers: {
 		setId: (state, action) => {
@@ -126,6 +127,9 @@ const RoomSlice = createSlice({
 		},
 		setFormatedCheckOut: (state, action) => {
 			state.formatcheckOut = action.payload;
+		},
+		setGalleryImage: (state, action) => {
+			state.galleryImage = action.payload;
 		},
 	},
 });

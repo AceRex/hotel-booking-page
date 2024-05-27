@@ -11,12 +11,48 @@ import { Link } from "react-router-dom";
 import { RoomActions } from "../Redux/Slice/RoomSlice";
 import Carousel from "../components/Carousel";
 import Branch from "../components/branch";
+import Img from "../assets/img/rooms/1.png";
+import Img2 from "../assets/img/rooms/2.png";
+import Img3 from "../assets/img/rooms/3.png";
+import Img4 from "../assets/img/rooms/4.png";
+import Img5 from "../assets/img/rooms/5.png";
+import Img6 from "../assets/img/rooms/6.png";
 
 const RoomDetails = () => {
+	const sliders = [
+		{
+			url: `${Img}`,
+		},
+		{
+			url: `${Img2}`,
+		},
+		{
+			url: `${Img3}`,
+		},
+		{
+			url: `${Img4}`,
+		},
+		{
+			url: `${Img5}`,
+		},
+		{
+			url: `${Img6}`,
+		},
+	];
 	const { RoomTypeName } = useParams();
 	const dispatch = useDispatch();
 	const category = useSelector((state) => state.room.category);
 	const sampleRoom = useSelector((state) => state.room.sampleRoom);
+	let galleryImage;
+	try {
+		// Attempt to parse the JSON string
+		galleryImage = sampleRoom?.GalleryImage1 ? JSON.parse(sampleRoom.GalleryImage1) : undefined;
+	} catch (error) {
+		console.error("Failed to parse GalleryImage1:", error);
+		galleryImage = undefined;
+	}
+	// const galleryImage = JSON.parse(sampleRoom?.GalleryImage1);
+	dispatch(RoomActions.setGalleryImage(galleryImage || sliders));
 
 	const Data = useSelector((state) => state.room.data);
 
@@ -33,7 +69,7 @@ const RoomDetails = () => {
 				<>
 					<div className="bg-room bg-cover bg-center h-[400px] relative flex justify-center items-center">
 						<div className="absolute w-full h-full bg-black/75">
-							<h1 className="text-6xl text-white z-20 font-primary text-center max-sm:mt-36 uppercase"> {RoomTypeName} Details</h1>
+							<h1 className="text-6xl text-white z-20 font-primary text-center max-sm:mt-36 uppercase lg:mt-36"> {RoomTypeName} Details</h1>
 						</div>
 					</div>
 					<div className="container mx-auto">
@@ -49,7 +85,7 @@ const RoomDetails = () => {
 									<img className="mb-8" src={Img3} alt="house" />
 								</div> */}
 
-								<Carousel />
+								<Carousel image={sampleRoom} />
 
 								{/* <div className="mt-12">
 							<h3 className="h3 mb-3">Room Facilities</h3>

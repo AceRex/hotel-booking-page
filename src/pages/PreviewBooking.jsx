@@ -2,12 +2,16 @@ import axios from "axios";
 import { BsArrowBarLeft } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { RoomActions } from "../Redux/Slice/RoomSlice";
+import { PaystackButton } from "react-paystack";
+import { useNavigate } from "react-router-dom";
 
 const PreviewBooking = () => {
 	const dispatch = useDispatch();
+	let navigate = useNavigate();
 	const previewItem = useSelector((state) => state.room.previewItem);
 
 	const token = useSelector((state) => state.company.auth_token);
+	const publicKey = useSelector((state) => state.company.publickey);
 	const sampleRoom = useSelector((state) => state.room.sampleRoom);
 
 	const CheckIn = useSelector((state) => state.room.checkIn);
@@ -29,6 +33,8 @@ const PreviewBooking = () => {
 		day: "numeric",
 	};
 	const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000;
+	const price = Math.ceil((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || sampleRoom.Price);
+	console.log(price);
 	const handleClose = () => {
 		dispatch(RoomActions.setPreviewItem(!previewItem));
 		dispatch(RoomActions.setPreviewedRoom());
@@ -87,6 +93,32 @@ const PreviewBooking = () => {
 		}
 	};
 
+	const componentProps = {
+		email: Email,
+		amount: price * 100,
+		metadata: {
+			FirstName,
+			Phone,
+		},
+		publicKey,
+		text: "Make Payment for your room",
+		onSuccess: () =>
+			setTimeout(
+				() => dispatch(RoomActions.setFirstName("")),
+				dispatch(RoomActions.setLastName("")),
+				dispatch(RoomActions.setPhone("")),
+				dispatch(RoomActions.setEmail("")),
+				dispatch(RoomActions.setAddress("")),
+				dispatch(RoomActions.setKid()),
+				dispatch(RoomActions.setAdult()),
+
+				(window.location.href = "/"),
+				alert("Thanks for doing business with us! Come back soon!!"),
+				1000
+			),
+	};
+	console.log(componentProps);
+
 	return (
 		<div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex ">
 			<div className="w-[600px] max-md:w-[100%] flex flex-col ">
@@ -121,7 +153,7 @@ const PreviewBooking = () => {
 						<div className="flex justify-between items-center">
 							<p className="text-zinc-500 font-bold my-1">Price</p>
 
-							<h2 className="">₦ {(Math.ceil((CheckOut - CheckIn) / MILLISECONDS_IN_A_DAY) * (sampleRoom?.Price || sampleRoom.Price)).toLocaleString()}</h2>
+							<h2 className="">₦ {price}</h2>
 						</div>
 						<div className="flex justify-between items-center">
 							<p className="text-zinc-500 font-bold my-1">Number of Guest</p>
@@ -155,7 +187,10 @@ const PreviewBooking = () => {
 						<button className="btn btn-lg btn-primary mx-auto" onClick={BookRoom}>
 							Book and hold
 						</button>
-						<button className="btn btn-lg btn-primary mx-auto">Pay Now</button>
+						{/* <button className="btn btn-lg btn-primary mx-auto" onClick={Paynow}>
+							Pay Now
+						</button> */}
+						<PaystackButton className="btn btn-lg btn-primary mx-auto" {...componentProps} />
 					</div>
 				</div>
 			</div>

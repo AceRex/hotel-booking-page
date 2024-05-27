@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaArrowRight, FaArrowLeft, FaDotCircle } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import Img from "../assets/img/rooms/1.png";
 import Img2 from "../assets/img/rooms/2.png";
 import Img3 from "../assets/img/rooms/3.png";
@@ -8,6 +9,8 @@ import Img5 from "../assets/img/rooms/5.png";
 import Img6 from "../assets/img/rooms/6.png";
 
 const CarouselView = () => {
+	const img = useSelector((state) => state.room.galleryImage);
+	console.log(img);
 	const sliders = [
 		{
 			url: `${Img}`,
@@ -32,11 +35,11 @@ const CarouselView = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const prevSlide = () => {
 		const isFirstSlide = currentIndex === 0;
-		const newIndex = isFirstSlide ? sliders.length - 1 : currentIndex - 1;
+		const newIndex = isFirstSlide ? img.length - 1 : currentIndex - 1;
 		setCurrentIndex(newIndex);
 	};
 	const nextSlide = () => {
-		const isLastSlide = currentIndex === sliders.length - 1;
+		const isLastSlide = currentIndex === img.length - 1;
 		const newIndex = isLastSlide ? 0 : currentIndex + 1;
 		setCurrentIndex(newIndex);
 	};
@@ -64,7 +67,7 @@ const CarouselView = () => {
 			</div>
 
 			<div className="flex top-4 justify-center gap-3 py-2 ">
-				{sliders.map((slides, index) => (
+				{img.map((slides, index) => (
 					<div key={index} onClick={() => goToSlide(index)} className="text-2xl cursor-pointer">
 						<FaDotCircle className="text-accent" />
 					</div>

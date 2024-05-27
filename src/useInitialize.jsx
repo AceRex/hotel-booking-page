@@ -56,10 +56,10 @@ const Initialize = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-
 			dispatch(RoomActions.setError(response.message));
 
 			dispatch(RoomActions.setData(response.data.roomsInfo));
+			dispatch(CompanyActions.setM_id(response.data.companyInfo.tenantId));
 		} catch (error) {
 			const errorMessage = error.response ? error.response.data.message : "An error occurred";
 			dispatch(RoomActions.setError(errorMessage));
@@ -90,6 +90,10 @@ const Initialize = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
+
+			console.log(response.data.data);
+			dispatch(CompanyActions.setPayment(response.data));
+			dispatch(CompanyActions.setPublicKey(response.data.data[2].Value));
 		} catch (error) {
 			console.log(error);
 		}
