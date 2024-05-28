@@ -2,11 +2,6 @@ import { useState } from "react";
 import { FaArrowRight, FaArrowLeft, FaDotCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Img from "../assets/img/rooms/1.png";
-import Img2 from "../assets/img/rooms/2.png";
-import Img3 from "../assets/img/rooms/3.png";
-import Img4 from "../assets/img/rooms/4.png";
-import Img5 from "../assets/img/rooms/5.png";
-import Img6 from "../assets/img/rooms/6.png";
 
 const CarouselView = () => {
 	const img = useSelector((state) => state.room.galleryImage);

@@ -39,10 +39,10 @@ const Header = () => {
 					<a href="/" className="hover:text-accent transition py-2 lg:py-0 lg:px-4">
 						Home
 					</a>
-					<a href="" className="hover:text-accent transition py-2 lg:py-0 lg:px-4">
+					<a href="/" className="hover:text-accent transition py-2 lg:py-0 lg:px-4">
 						Rooms
 					</a>
-					<a href="" className="hover:text-accent transition py-2 lg:py-0 lg:px-4">
+					<a href="/" className="hover:text-accent transition py-2 lg:py-0 lg:px-4">
 						Restaurant
 					</a>
 					<a href={`${baseUrl}/guest/login`} className="bg-accent text-white py-2 px-6 mt-4 lg:mt-0 lg:ml-4 lg:px-10 lg:py-2 lg:block">

@@ -3,11 +3,9 @@ import { BsArrowBarLeft } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { RoomActions } from "../Redux/Slice/RoomSlice";
 import { PaystackButton } from "react-paystack";
-import { useNavigate } from "react-router-dom";
 
 const PreviewBooking = () => {
 	const dispatch = useDispatch();
-	let navigate = useNavigate();
 	const previewItem = useSelector((state) => state.room.previewItem);
 
 	const token = useSelector((state) => state.company.auth_token);
