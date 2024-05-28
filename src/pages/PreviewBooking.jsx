@@ -101,27 +101,30 @@ const PreviewBooking = () => {
 			Phone,
 		},
 		publicKey,
-		text: "Make Payment for your room",
-		onSuccess: () =>
-			setTimeout(
-				() => dispatch(RoomActions.setFirstName("")),
-				dispatch(RoomActions.setLastName("")),
-				dispatch(RoomActions.setPhone("")),
-				dispatch(RoomActions.setEmail("")),
-				dispatch(RoomActions.setAddress("")),
-				dispatch(RoomActions.setKid()),
-				dispatch(RoomActions.setAdult()),
-
-				(window.location.href = "/"),
-				alert("Thanks for doing business with us! Come back soon!!"),
-				1000
-			),
+		text: "Pay now",
+		onSuccess: () => {
+			BookRoom()
+				.then(() => {
+					dispatch(RoomActions.setFirstName(""));
+					dispatch(RoomActions.setLastName(""));
+					dispatch(RoomActions.setPhone(""));
+					dispatch(RoomActions.setEmail(""));
+					dispatch(RoomActions.setAddress(""));
+					dispatch(RoomActions.setKid());
+					dispatch(RoomActions.setAdult());
+					alert("Thanks for doing business with us! Come back soon!!");
+					window.location.href = "/";
+				})
+				.catch((err) => {
+					console.log(`Error booking room: ${err}`);
+				});
+		},
 	};
 	console.log(componentProps);
 
 	return (
-		<div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex ">
-			<div className="w-[600px] max-md:w-[100%] flex flex-col ">
+		<div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex">
+			<div className="w-[600px] max-md:w-[100%] flex flex-col mx-auto mt-14">
 				<div className="bg-white p-12 max-md:p-2 max-md:pt-12 rounded">
 					<button className="flex items-center gap-x-2 pointer" onClick={handleClose}>
 						<div className="text-accent">

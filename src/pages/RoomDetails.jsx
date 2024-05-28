@@ -45,13 +45,11 @@ const RoomDetails = () => {
 	const sampleRoom = useSelector((state) => state.room.sampleRoom);
 	let galleryImage;
 	try {
-		// Attempt to parse the JSON string
 		galleryImage = sampleRoom?.GalleryImage1 ? JSON.parse(sampleRoom.GalleryImage1) : undefined;
 	} catch (error) {
 		console.error("Failed to parse GalleryImage1:", error);
 		galleryImage = undefined;
 	}
-	// const galleryImage = JSON.parse(sampleRoom?.GalleryImage1);
 	dispatch(RoomActions.setGalleryImage(galleryImage || sliders));
 
 	const Data = useSelector((state) => state.room.data);
@@ -60,7 +58,6 @@ const RoomDetails = () => {
 		const array = Data.filter((room) => room.RoomTypeName === RoomTypeName);
 		dispatch(RoomActions.setCategory(array));
 		dispatch(RoomActions.setSampleRoom(array[0]));
-		// setSampleRoom(array[0]);
 	}, [Data, RoomTypeName, dispatch]);
 
 	return (
@@ -85,7 +82,7 @@ const RoomDetails = () => {
 									<img className="mb-8" src={Img3} alt="house" />
 								</div> */}
 
-								<Carousel image={sampleRoom} />
+								<Carousel />
 
 								{/* <div className="mt-12">
 							<h3 className="h3 mb-3">Room Facilities</h3>

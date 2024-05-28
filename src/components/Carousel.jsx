@@ -10,27 +10,9 @@ import Img6 from "../assets/img/rooms/6.png";
 
 const CarouselView = () => {
 	const img = useSelector((state) => state.room.galleryImage);
-	console.log(img);
-	const sliders = [
-		{
-			url: `${Img}`,
-		},
-		{
-			url: `${Img2}`,
-		},
-		{
-			url: `${Img3}`,
-		},
-		{
-			url: `${Img4}`,
-		},
-		{
-			url: `${Img5}`,
-		},
-		{
-			url: `${Img6}`,
-		},
-	];
+	const baseUrl = useSelector((state) => state.company.baseUrl);
+	const tenant_id = useSelector((state) => state.company.m_id);
+	const imgURL = `${baseUrl}/storage/uploads/tenant/${tenant_id}/rooms/`;
 
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const prevSlide = () => {
@@ -52,11 +34,11 @@ const CarouselView = () => {
 		<div className="max-w-[100%] h-[300px] w-full relative group">
 			<div
 				style={{
-					backgroundImage: `url(${sliders && sliders.length > 0 ? sliders[currentIndex].url : ""})`,
+					backgroundImage: `url(${imgURL && img.length > 0 ? imgURL + img[currentIndex] : Img})`,
 				}}
 				className="w-full h-full bg-center bg-cover duration-500"
 			></div>
-			{/* left arrow */}
+
 			<div className="hidden group-hover:block cursor-pointer absolute top-[50%] -translate-x-0 translate-y-[-50%]  left-5 text-2xl rounded-full p-2">
 				<FaArrowLeft className="text-accent" onClick={prevSlide} />
 			</div>

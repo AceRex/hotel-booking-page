@@ -56,6 +56,7 @@ const Initialize = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
+			console.log(response);
 			dispatch(RoomActions.setError(response.message));
 
 			dispatch(RoomActions.setData(response.data.roomsInfo));
@@ -91,7 +92,6 @@ const Initialize = () => {
 				},
 			});
 
-			console.log(response.data.data);
 			dispatch(CompanyActions.setPayment(response.data));
 			dispatch(CompanyActions.setPublicKey(response.data.data[2].Value));
 		} catch (error) {
