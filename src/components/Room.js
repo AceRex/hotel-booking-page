@@ -8,7 +8,7 @@ const Room = () => {
 	return (
 		<section id="Room" className="py-24">
 			<div className="text-center">
-				<h2 className="h3"> Our Hotels</h2>
+				<h2 className="h3"> Our Hotel</h2>
 			</div>
 			{loading && <Loader />}
 			{!loading && !error && <RoomCard />}
