@@ -121,9 +121,9 @@ const PreviewBooking = () => {
 	console.log(componentProps);
 
 	return (
-		<div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex">
-			<div className="w-[600px] max-md:w-[100%] flex flex-col mx-auto mt-14">
-				<div className="bg-white p-12 max-md:p-2 max-md:pt-12 rounded">
+		<div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex z-50">
+			<div className="w-[600px] max-md:w-[100%] flex flex-col mx-auto mt-10">
+				<div className="bg-white px-12 py-10 max-md:p-2 max-md:pt-12 rounded">
 					<button className="flex items-center gap-x-2 pointer" onClick={handleClose}>
 						<div className="text-accent">
 							<BsArrowBarLeft className="text-[30px]" />
