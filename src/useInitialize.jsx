@@ -105,9 +105,13 @@ const Initialize = () => {
         },
       });
       const data = response.data.data;
-      const res = data.find((item) => item.Name === "logo");
-	  const logoValue = res ? res.Value : null;
+      const logo = data.find((item) => item.Name === "logo");
+      const favicon = data.find((item) => item.Name === "logo");
+      const logoValue = logo ? logo.Value : null;
       dispatch(CompanyActions.setLogo(logoValue));
+      dispatch(CompanyActions.setFavicon(favicon));
+
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

@@ -14,6 +14,7 @@ const CompanySlice = createSlice({
     publickey: "",
     payment: [],
     logo: "",
+    favicon: "",
   },
   reducers: {
     setCompanyName: (state, action) => {
@@ -48,6 +49,9 @@ const CompanySlice = createSlice({
     },
     setLogo: (state, action) => {
       state.logo = action.payload;
+    },
+    setFavicon: (state, action) => {
+      state.favicon = action.payload;
     },
   },
 });
