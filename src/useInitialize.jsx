@@ -42,6 +42,7 @@ const Initialize = () => {
 			await companyDetails(token);
 			await branchDetails(token);
 			await PaymentInfo(token);
+			await Settings(token);
 		} catch (error) {
 			console.warn(error);
 		}
@@ -90,6 +91,21 @@ const Initialize = () => {
 
 			dispatch(CompanyActions.setPayment(response.data));
 			dispatch(CompanyActions.setPublicKey(response.data.data[2].Value));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const Settings = async (token) => {
+		try {
+			const response = await axios.get(`${base_URL}/api/v1/SettingInfo`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			const data = response.data.data;
+			const res = data.find((item) => item.Name === "logo");
+			const logoValue = res ? res.Value : null;
+			dispatch(CompanyActions.setLogo(logoValue));
 		} catch (error) {
 			console.log(error);
 		}
