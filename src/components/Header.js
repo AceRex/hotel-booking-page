@@ -6,6 +6,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Header = () => {
   const [header, setHeader] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const Logo = useSelector((state) => state.company.logo);
   const baseUrl = useSelector((state) => state.company.baseUrl);
 
   useEffect(() => {
@@ -27,8 +28,8 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between">
         <a href="/">
           <img
-            className="w-[50px]"
-            src={`${baseUrl}/storage/uploads/logo/logo.png`}
+            className="w-[200px]"
+            src={`${baseUrl}/storage/uploads/logo/${Logo}`}
             alt="Logo"
           />
         </a>

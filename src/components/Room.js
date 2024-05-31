@@ -12,7 +12,7 @@ const Room = () => {
   const [categorys, setCategorys] = useState([]);
   const imgURL = `${baseUrl}/storage/uploads/tenant/${tenant_id}/rooms/`;
 
-  console.log(Data);
+
   useEffect(() => {
     const array = [];
     const roomCat = {};
