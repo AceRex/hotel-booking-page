@@ -22,53 +22,50 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="w-[100vw] px-5 py-10 bg-primary text-accent ">
-        <div className="w-[90%] m-auto flex min-md:flex-row max-md:flex-col min-md:justify-between max-md:items-center min-md:place-content-center min-md:items-start">
-          <div className="min-md:border-r min-md:w-[20%] max-md:w-[50%]">
-            <img
-              src={`${baseUrl}/storage/uploads/logo/${Logo}`}
-              alt="Logo"
-              className="min-md:w-[250px] max-md:w-[200px]"
-            />
+      <footer className="w-full px-5 py-10 bg-primary text-accent">
+        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="w-full md:w-1/2 flex flex-col md:flex-row items-center md:items-start border-b md:border-b-0 md:border-r border-white">
+            <div className="w-full md:w-auto mb-4 md:mb-0">
+              <img
+                src={`${baseUrl}/storage/uploads/logo/${Logo}`}
+                alt="Logo"
+                className="w-40 md:w-60"
+              />
+            </div>
+            <div className="text-center md:text-left md:ml-4 mt-2 text-white">
+              <p className="font-bold tracking-wide text-xl md:text-2xl capitalize text-white">
+                {company_name}
+              </p>
+              <p className="font-light text-sm capitalize">{motto}</p>
+            </div>
           </div>
-          <div className="min-md:text-left max-md:text-center min-md:w-[40%] max-md:mt-4 text-white min-md:pl-7">
-            <p className="font-bold tracking-wide min-md:text-xl max-md:text-2xl capitalize text-white">
-              {company_name}
+          <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-white mt-4 md:mt-0">
+            <p className="text-center md:text-right">
+              {country && `${address}, ${city}, ${state}, ${country}`}
             </p>
-            <p className="font-light text-sm capitalize">{motto}</p>
-          </div>
-          <div className="min-md:w-[40%] max-md:w-[100%] max-md:mt-4 text-white flex flex-col min-md:text-end min-md:tems-end min-md:place-content-end min-md:content-end max-md:items-center max-md:place-content-center max-md:content-end">
-            <p>
-              {address}
-              {" , "}
-              {city}
-              {" , "} {state}
-              {" , "}
-              {country}
-            </p>
-            <p>{mobile}</p>
-            <div className="flex flex-row w-[100%] text-white justify-center gap-4 mt-3">
-              {facebook !== "" && (
+            <p className="text-center md:text-right">{mobile}</p>
+            <div className="flex justify-center md:justify-end gap-4 mt-3">
+              {facebook && (
                 <a href={`https://${facebook}`}>
                   <FaFacebookSquare size={20} />
                 </a>
               )}
-              {instagram !== "" && (
+              {instagram && (
                 <a href={`https://${instagram}`}>
                   <RiInstagramFill size={20} />
                 </a>
               )}
-              {twitterX !== "" && (
+              {twitterX && (
                 <a href={`https://${twitterX}`}>
                   <RiTwitterXFill size={20} />
                 </a>
               )}
-              {website !== "" && (
+              {website && (
                 <a href={`https://${website}`}>
                   <HiGlobeAlt size={20} />
                 </a>
               )}
-              {email !== "" && (
+              {email && (
                 <a href={`mailto:${email}`}>
                   <HiOutlineMail size={20} />
                 </a>
@@ -77,9 +74,14 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      <footer className="w-[100vw] p-3 text-center">
+      <footer className="w-full p-3 text-center bg-white text-accent">
         Powered by{" "}
-        <a href="http://cranesoft.com" rel="noreferrer" target="_blank">
+        <a
+          href="http://cranesoft.com"
+          rel="noreferrer"
+          target="_blank"
+          className="text-black"
+        >
           Cranesoft
         </a>{" "}
         &copy; 2024
