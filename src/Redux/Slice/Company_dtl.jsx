@@ -4,6 +4,12 @@ const CompanySlice = createSlice({
   name: "company",
   initialState: {
     company_name: "",
+    company_email: "",
+    company_mobile: "",
+    company_website: "",
+    company_city: "",
+    company_state: "",
+    company_country: "",
     address: "",
     motto: "",
     c_url: "",
@@ -15,13 +21,34 @@ const CompanySlice = createSlice({
     payment: [],
     logo: "",
     favicon: "",
+    facebook: "",
+    twitterX: "",
+    instagram: "",
   },
   reducers: {
     setCompanyName: (state, action) => {
       state.company_name = action.payload;
     },
+    setCompanyEmail: (state, action) => {
+      state.company_email = action.payload;
+    },
+    setCompanyMobile: (state, action) => {
+      state.company_mobile = action.payload;
+    },
+    setCompanyWebsite: (state, action) => {
+      state.company_website = action.payload;
+    },
     setAddress: (state, action) => {
       state.address = action.payload;
+    },
+    setCity: (state, action) => {
+      state.company_city = action.payload;
+    },
+    setState: (state, action) => {
+      state.company_state = action.payload;
+    },
+    setCountry: (state, action) => {
+      state.company_country = action.payload;
     },
     setMotto: (state, action) => {
       state.motto = action.payload;
@@ -52,6 +79,15 @@ const CompanySlice = createSlice({
     },
     setFavicon: (state, action) => {
       state.favicon = action.payload;
+    },
+    setFacebook: (state, action) => {
+      state.facebook = action.payload;
+    },
+    setInstagram: (state, action) => {
+      state.instagram = action.payload;
+    },
+    setTwitterX: (state, action) => {
+      state.twitterX = action.payload;
     },
   },
 });
