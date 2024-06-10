@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Loader from "./loading";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 const Home = React.lazy(() => import("./pages/Home"));
 const BookNow = React.lazy(() => import("./pages/BookNow"));
 const RoomDetails = React.lazy(() => import("./pages/RoomDetails"));
@@ -23,6 +24,7 @@ const AppRoutes = () => (
           <Route path="/:RoomTypeName/booknow" element={<BookNow />} />
           <Route path="*" element={<h1>Error</h1>} />
         </Routes>
+        <Footer />
       </Suspense>
     </Router>
   </>

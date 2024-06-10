@@ -20,7 +20,6 @@ const Home = () => {
       <section ref={Book}>
         <Room />
       </section>
-      <Footer />
     </>
   );
 };
