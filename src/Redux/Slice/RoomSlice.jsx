@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-const checkoutDate = new Date();
-checkoutDate.setDate(checkoutDate.getDate() + 1);
 
 const RoomSlice = createSlice({
   name: "room",

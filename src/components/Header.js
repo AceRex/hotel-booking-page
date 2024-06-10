@@ -26,7 +26,7 @@ const Header = () => {
       } fixed z-50 w-full transition-all duration-300`}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <a href="/online-booking">
+        <a href="/">
           <img
             className="w-[200px]"
             src={`${baseUrl}/storage/uploads/logo/${Logo}`}
@@ -54,13 +54,13 @@ const Header = () => {
           }  lg:text-accent lg:flex flex-col lg:flex-row lg:items-center gap-x-4 font-tertiary tracking-[3px] text-[15px] lg:gap-x-8 absolute lg:relative top-16 lg:top-auto left-0 lg:left-auto bg-white lg:bg-transparent w-full lg:w-auto shadow-lg lg:shadow-none`}
         >
           <a
-            href="/online-booking"
+            href="/"
             className="hover:text-accent transition py-2 lg:py-0 lg:px-4"
           >
             Home
           </a>
           <a
-            href="/online-booking"
+            href="/"
             className="hover:text-accent transition py-2 lg:py-0 lg:px-4"
           >
             Rooms
