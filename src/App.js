@@ -1,22 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import Initialize from "./useInitialize";
-import { RouterProvider } from "react-router-dom";
-import router from "./router";
+import AppRoutes from "./router.jsx";
 
 const App = () => {
-	const { getTokenDetails } = Initialize();
+  const { getTokenDetails } = Initialize();
 
-	useEffect(() => {
-		getTokenDetails();
-	}, [getTokenDetails]);
-	return (
-		<div>
-			<Header />
-			<RouterProvider router={router} />
-		</div>
-	);
+  useEffect(() => {
+    getTokenDetails();
+  }, [getTokenDetails]);
+  return (
+      <AppRoutes />
+  );
 };
 
 export default App;
