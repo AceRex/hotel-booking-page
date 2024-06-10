@@ -77,7 +77,7 @@ export default function Footer() {
       <footer className="w-full p-3 text-center bg-white text-accent">
         Powered by{" "}
         <a
-          href="http://cranesoft.com"
+          href="http://cranesoftapp.com"
           rel="noreferrer"
           target="_blank"
           className="text-black"

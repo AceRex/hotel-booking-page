@@ -1,15 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./Redux/Store";
+import Loader from "./loading";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<Provider store={store}>
-		<React.StrictMode>
-			<App />
-		</React.StrictMode>
-	</Provider>
+  <Provider store={store}>
+    <React.StrictMode>
+      <Suspense fallback={<Loader />}>
+        <App />
+      </Suspense>
+    </React.StrictMode>
+  </Provider>
 );

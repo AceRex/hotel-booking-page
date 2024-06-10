@@ -1,14 +1,10 @@
 import axios from "axios";
-// import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { RoomActions } from "./Redux/Slice/RoomSlice";
 import { CompanyActions } from "./Redux/Slice/Company_dtl";
-// import { useParams } from "react-router-dom";
 
 const Initialize = () => {
   const dispatch = useDispatch();
-  // const [token, setToken] = useState();
-  // const { m_id } = useParams();
 
   const T_URL = extractSubDomainFromURL();
 
@@ -27,7 +23,7 @@ const Initialize = () => {
         return null;
       }
     } catch (error) {
-      console.error("Error extracting subdomin:", error);
+      console.error("Error extracting subdomain:", error);
       return null;
     }
   }
@@ -55,7 +51,6 @@ const Initialize = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data.companyInfo);
       dispatch(RoomActions.setError(response.message));
       dispatch(RoomActions.setData(response.data.roomsInfo));
       dispatch(CompanyActions.setM_id(response.data.companyInfo.tenantId));
@@ -128,6 +123,7 @@ const Initialize = () => {
       const data = response.data.data;
       const res = data.find((item) => item.Name === "logo");
       const logoValue = res ? res.Value : null;
+      document.cookie = `logo=${logoValue}; path=/; SameSite=Lax; Secure`;
       dispatch(CompanyActions.setLogo(logoValue));
     } catch (error) {
       console.log(error);

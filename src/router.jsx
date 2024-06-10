@@ -1,21 +1,22 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
-import RoomDetails from "./pages/RoomDetails";
-import BookNow from "./pages/BookNow";
+const Home = React.lazy(() => import("./pages/Home"));
+const BookNow = React.lazy(() => import("./pages/BookNow"));
+const RoomDetails = React.lazy(() => import("./pages/RoomDetails"));
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Home />,
-	},
-	{
-		path: "/:RoomTypeName",
-		element: <RoomDetails />,
-	},
-	{
-		path: "/:RoomTypeName/booknow",
-		element: <BookNow />,
-	},
+  {
+    path: "/online-booking",
+    element: <Home />,
+  },
+  {
+    path: "/:RoomTypeName",
+    element: <RoomDetails />,
+  },
+  {
+    path: "/:RoomTypeName/booknow",
+    element: <BookNow />,
+  },
 ]);
 
 export default router;
