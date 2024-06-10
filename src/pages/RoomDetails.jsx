@@ -17,6 +17,7 @@ import Img3 from "../assets/img/rooms/3.png";
 import Img4 from "../assets/img/rooms/4.png";
 import Img5 from "../assets/img/rooms/5.png";
 import Img6 from "../assets/img/rooms/6.png";
+import Loader from "../loading";
 
 const RoomDetails = () => {
   const sliders = [
@@ -69,24 +70,23 @@ const RoomDetails = () => {
           <div className="bg-room bg-cover bg-center h-[400px] relative flex justify-center items-center">
             <div className="absolute w-full h-full bg-black/75">
               <h1 className="text-6xl text-white z-20 font-primary text-center max-sm:mt-36 uppercase lg:mt-36">
-                {" "}
                 {RoomTypeName} Details
               </h1>
             </div>
           </div>
           <div className="container mx-auto">
-            <div className="flex flex-col lg:flex-row h-full py-24">
-              <div className="w-full h-full lg:w-[60%] px-6">
-                <h6 className="text-gray-500">
+            <div className="flex flex-col lg:flex-row h-full py-12 lg:py-24">
+              <div className="w-full h-full lg:w-[70%] px-0 lg:px-6">
+                <Carousel />
+                <h6 className="text-gray-600 uppercase mt-24 mb-3">
                   No of Rooms available {category.length}
                 </h6>
-                <h2 className="h2">{RoomTypeName}</h2>
+                <h2 className="text-6xl">{RoomTypeName}</h2>
 
-                <Carousel />
-                <p className="mt-8">{sampleRoom.LongDescription}</p>
+                <p className="mt-7 text-justify pb-8 border-b border-gray-200">{sampleRoom.LongDescription}</p>
               </div>
-              <div className="w-full h-full lg:w-[40%] max-md:mt-10">
-                <div className=" py-8 px-6 bg-accent/20 mb-12 ">
+              <div className="w-full h-full lg:w-[30%] max-md:mt-10">
+                <div className=" py-8 px-6 bg-accent/20 mb-2">
                   <div className="flex flex-col space-y-4 mb-4">
                     <h3>Your Reservation</h3>
 
@@ -118,13 +118,13 @@ const RoomDetails = () => {
                   </div>
                 </div>
 
-                <div className="">
+                <div className="bg-accent/5 p-12">
                   <h3 className="h3">Hotel rules</h3>
                   <p className="mb-6">
                     Kindly Obey the rules in order to avoid embassrement{" "}
                   </p>
 
-                  <ul className="flex flex-col gap-y-4">
+                  <ul className="flex flex-col gap-y-4 ">
                     <li className="flex items-center gap-x-4">
                       <FaCheck className="text-accent" />
                       Check-in: 3:00pm - 9:00pm
@@ -144,10 +144,9 @@ const RoomDetails = () => {
           </div>
         </>
       ) : (
-        <div> loading....</div>
+       <Loader />
       )}
 
-      {/* {Data.map((items) => console.log(items))} */}
     </section>
   );
 };

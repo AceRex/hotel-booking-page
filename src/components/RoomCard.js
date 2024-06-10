@@ -10,7 +10,6 @@ const RoomCard = ({
   Price,
   ShortDescription,
 }) => {
-
   return (
     <div className="">
       <div className="bg-red shadow-2xl min-h-[500px] group">
@@ -51,7 +50,7 @@ const RoomCard = ({
         <div className="text-center h-[20%]">
           <h3 className="h3">{RoomTypeName}</h3>
 
-          <p className="max-w-[300px] mx-auto mb-3 lg:mb-6 ">
+          <p className="max-w-[300px] h-[4.5rem] overflow-hidden mx-auto mb-3 lg:mb-6 ">
             {ShortDescription}
           </p>
         </div>

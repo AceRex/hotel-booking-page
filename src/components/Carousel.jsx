@@ -26,7 +26,7 @@ const CarouselView = () => {
 	};
 
 	return (
-		<div className="max-w-[100%] h-[300px] w-full relative group">
+		<div className="max-w-[100%] h-[250px] lg:h-[500px] w-full relative group">
 			<div
 				style={{
 					backgroundImage: `url(${imgURL && img.length > 0 ? imgURL + img[currentIndex] : Img})`,
